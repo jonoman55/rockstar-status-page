@@ -1,0 +1,54 @@
+.services .service .platforms .service-indicator {
+  margin: -4px 8px 0 0;
+  width: 10px;
+  height: 10px;
+}
+.services .service .platforms .platform {
+  margin-bottom: 5px;
+  outline: none;
+}
+@media (max-width: 767px) {
+  .services .service .flex {
+    text-align: left;
+  }
+  .services .service .flex > :not(.fob) {
+    padding-left: 25px;
+  }
+  .services .service .flex .platforms {
+    display: block;
+    margin: 20px auto;
+  }
+  .services .service .flex .platforms .platform {
+    font-size: 0.9375em;
+  }
+}
+.service-indicator {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+.services .service .platforms {
+  text-align: left;
+  display: table;
+  margin: 30px auto;
+}
+.service-indicator {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+.service-indicator.up {
+  background: #11ca4c;
+}
+.service-indicator.down {
+  background: #c00;
+}
+.service-indicator.limited {
+  background: #f8aa00;
+}
