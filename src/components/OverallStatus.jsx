@@ -47,7 +47,7 @@ const OverallStatus = () => {
                         </IconButton>
                     )}
                     title="Overall Status"
-                    subheader={`${updated}`}
+                    subheader={`${new Date().toLocaleString()}`}
                 />
                 <CardMedia
                     sx={{ objectFit: 'contain' }}
@@ -56,15 +56,12 @@ const OverallStatus = () => {
                     image={fetchImage(0)}
                     alt="logo"
                 />
-                <CardContent sx={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap', pt: 3 }}>
+                <CardContent sx={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap', pt: 4, px: 2 }}>
                     <Paper component={Link} href={"https://support.rockstargames.com/servicestatus"} target='_blank' sx={{
-                        p: 1, color: 'primary.contrastText', bgcolor: 'primary.main',
-                        textDecoration: 'none', minHeight: '125px', 
+                        p: 1, color: 'primary.contrastText', bgcolor: 'primary.main', textDecoration: 'none', minHeight: '125px', 
                         '&:hover': { color: 'primary.contrastText', bgcolor: 'custom.disabled', opacity: 1 }
                     }}>
-                        <Typography variant='h6' sx={{ color: 'custom.main' }}>
-                            Overall Status
-                        </Typography>
+                        <Typography variant='h6' sx={{ color: 'custom.main' }}>Overall Status</Typography>
                         <Divider sx={{ pb: 1 }} />
                         <Stack direction='row' sx={{ pt: 1 }}>
                             <Typography sx={{ pr: 1 }}>Status:</Typography>
@@ -80,8 +77,8 @@ const OverallStatus = () => {
                     <Grid container spacing={2}>
                         {services?.map((service, index) => (
                             <Grid item key={index} xs={12} sm={12} md={12} lg={12}>
-                                <Box component={Paper}>
-
+                                <Box component={Paper} sx={{ bgcolor: 'primary.main' }}>
+                                    {/* service and their status */}
                                 </Box>
                             </Grid>
                         ))}

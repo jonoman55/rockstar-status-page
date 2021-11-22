@@ -1,31 +1,49 @@
-import { AppBar, Container, Tooltip, Button, Link } from '@mui/material';
+import { styled, AppBar, Container, Tooltip, Button, Link, Stack, Divider } from '@mui/material';
 import { Copyright } from '@mui/icons-material';
 
-// TODO : Add Rockstar copyright a link to their site
+const CustomButton = styled(Button)(({ theme }) => ({
+    color: theme.palette.primary.contrastText,
+    backgroundColor: 'inherit',
+    '&:hover': {
+        color: theme.palette.secondary.contrastText,
+        backgroundColor: 'transparent',
+    },
+    [theme.breakpoints.down('sm')]: {
+        fontSize: 12,
+    },
+    [theme.breakpoints.up('sm')]: {
+        fontSize: 12,
+    },
+    [theme.breakpoints.up('lg')]: {
+        fontSize: 16,
+    },
+}));
+
 const Footer = () => (
     <AppBar position='static' elevation={2} component='footer' sx={{
-        bottom: 0, width: '100%', height: 60, bgcolor: 'custom.main', flexDirection: 'row'
+        p: 1, bottom: 0, width: '100%', height: 'auto', bgcolor: 'custom.main', flexDirection: 'row'
     }}>
-        <Container sx={{
-            display: 'flex', justifyContent: 'center', alignItems: 'center'
-        }}>
-            <Tooltip title='Visit My GitHub Page' position='top'>
-                <Button
-                    sx={{
-                        color: 'primary.contrastText',
-                        '&:hover': {
-                            color: 'secondary.contrastText',
-                            bgcolor: 'transparent'
-                        },
-                    }}
-                    component={Link}
-                    startIcon={<Copyright sx={{ mb: 0.5 }} />}
-                    href='https://github.com/jonoman55/'
-                    target='_blank'
-                >
-                    John Chiappetta {new Date().getFullYear()}
-                </Button>
-            </Tooltip>
+        <Container sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <Stack sx={{
+                p: 1, display: 'flex', flexDirection: 'row', flexWrap: 'nowrap',
+                alignItems: 'baseline', justifyContent: 'space-evenly'
+            }}>
+                <Tooltip title='Visit My GitHub Page' placement='top'>
+                    <CustomButton component={Link} href='https://github.com/jonoman55/' target='_blank'
+                        startIcon={<Copyright sx={{ mb: 0.5 }} />}
+                    >
+                        John Chiappetta {new Date().getFullYear()}
+                    </CustomButton>
+                </Tooltip>
+                <Divider orientation="vertical" flexItem sx={{ py: 1 }} />
+                <Tooltip title='Rockstar Games' placement='top'>
+                    <CustomButton component={Link} href='https://www.rockstargames.com/' target='_blank'
+                        startIcon={<Copyright sx={{ ml: 1, mb: 0.5 }} />}
+                    >
+                        Rockstar Games {new Date().getFullYear()}
+                    </CustomButton>
+                </Tooltip>
+            </Stack>
         </Container>
     </AppBar>
 );

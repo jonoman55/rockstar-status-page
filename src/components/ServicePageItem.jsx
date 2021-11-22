@@ -1,15 +1,13 @@
 import { useNavigate } from "react-router-dom";
-import { Box, Avatar, Card, CardHeader, CardMedia, CardContent, CardActions, Paper, Typography, IconButton, Stack } from "@mui/material";
+import { Box, Avatar, Card, CardHeader, CardMedia, CardContent, CardActions, Paper, Typography, IconButton } from "@mui/material";
 import { Refresh as RefreshIcon, Wifi as WifiIcon } from "@mui/icons-material";
+import Platforms from './Platforms';
 import { styleStatus, fetchImage, fetchStatusIcon } from "../helpers";
 import { usePathname } from "../hooks/usePathname";
 
-// https://mui.com/components/cards/#main-content
-// TODO : Finish implementing this as a card component
 const ServicePageItem = ({ service, status }) => {
     const navigate = useNavigate();
     const pathname = usePathname();
-
     return (
         <Box component={Paper} sx={{
             width: '100%', bgcolor: 'primary.main', color: 'primary.contrastText',
@@ -38,7 +36,7 @@ const ServicePageItem = ({ service, status }) => {
                     title={`${service?.name}`}
                     subheader={`${new Date(service?.updated).toLocaleString()}`}
                 />
-                <Box sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'nowrap', alignItems: 'center', justifyContent: 'center' }}>
+                <Box sx={{ pb: 2, display: 'flex', flexDirection: 'row', flexWrap: 'nowrap', alignItems: 'center', justifyContent: 'center' }}>
                     <CardMedia sx={{
                         objectFit: 'scale-down', borderStyle: 'solid', borderWidth: 'thin', borderRadius: '2rem',
                         bgcolor: 'custom.light', height: '250px', maxWidth: '345px'
@@ -51,19 +49,16 @@ const ServicePageItem = ({ service, status }) => {
                 </Box>
                 <CardContent sx={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap' }}>
                     <Typography variant="h6" fontWeight="bold">Service</Typography>
-                    <Stack direction="row">
-                        <Typography sx={{ pr: 1 }}>Status:</Typography>
-                        <Typography variant="p" sx={{ color: `${styleStatus(status?.status?.toLowerCase())}`, fontWeight: 'bold' }}>
-                            {service?.status?.toUpperCase()}
-                        </Typography>
-                    </Stack>
+                    <Typography variant="p" sx={{ color: `${styleStatus(status?.status?.toLowerCase())}`, fontWeight: 'bold' }}>
+                        {service?.status?.toUpperCase()}
+                    </Typography>
                     <Typography variant="h6" fontWeight="bold">Status</Typography>
-                    <Stack direction="row">
-                        <Typography sx={{ pr: 1 }}>Status:</Typography>
-                        <Typography variant="p" sx={{ color: `${styleStatus(status?.status?.toLowerCase())}`, fontWeight: 'bold' }}>
-                            {status?.status?.toUpperCase()}
-                        </Typography>
-                    </Stack>
+                    <Typography variant="p" sx={{ color: `${styleStatus(status?.status?.toLowerCase())}`, fontWeight: 'bold' }}>
+                        {status?.status?.toUpperCase()}
+                    </Typography>
+                    {status?.services_platforms && (
+                        <Platforms platforms={status?.services_platforms} />
+                    )}
                 </CardContent>
                 <CardActions disableSpacing sx={{ flexDirection: 'column', alignItems: 'flex-end' }}>
                     {fetchStatusIcon(service?.status?.toLowerCase())}

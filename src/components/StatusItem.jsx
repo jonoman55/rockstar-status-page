@@ -1,4 +1,5 @@
-import { Box, Divider, List, ListItem, Paper, Stack, Typography } from '@mui/material';
+import { Box, Divider, Paper, Stack, Typography } from '@mui/material';
+import Platforms from './Platforms';
 import { styleStatus } from '../helpers';
 
 const StatusItem = ({ status }) => (
@@ -24,23 +25,7 @@ const StatusItem = ({ status }) => (
             <Typography>{new Date(status?.updated).toLocaleTimeString()}</Typography>
         </Box>
         {status?.services_platforms && (
-            <Box sx={{ py: 1 }} >
-                <Divider sx={{ pt: 1 }} />
-                <Typography sx={{ pt: 1, fontSize: 16 }} variant='h6'>Platforms</Typography>
-                {status?.services_platforms.map((p, idx) => (
-                    <Box key={idx}>
-                        <List sx={{ py: 0 }}>
-                            <ListItem sx={{ pb: 0 }}>{p.name}</ListItem>
-                            <ListItem sx={{ pb: 0 }}>
-                                <Typography component='h6' sx={{ pr: 1 }}>Status:</Typography>
-                                <Typography sx={{ color: `${styleStatus(p.status?.toLowerCase())}`, fontWeight: 'bold' }}>
-                                    {p.status}
-                                </Typography>
-                            </ListItem>
-                        </List>
-                    </Box>
-                ))}
-            </Box>
+            <Platforms platforms={status?.services_platforms} />
         )}
     </Box>
 );

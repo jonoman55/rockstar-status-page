@@ -17,6 +17,7 @@ const HomeButton = styled(ToggleButton)(({ theme }) => ({
 const CustomButton = styled(ToggleButton, {
     shouldForwardProp: (prop) => prop !== 'selected'
 })(({ theme, selected }) => ({
+    textAlign: 'center',
     color: theme.palette.primary.contrastText,
     ...(!selected && {
         '&:hover': { color: theme.palette.custom.main },

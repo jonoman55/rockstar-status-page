@@ -21,7 +21,8 @@ const Container = styled(Box)(({ theme }) => ({
 
 // TODO : need to finish implementing overall layout once components are finished
 // TODO : Add a dropdown where you can select a different TimeZone
-const App = () => {
+// TODO : Make the header of each card component a link to it's corresponding tab on the HomePage
+export default function App() {
     const { theme } = useThemeContext();
     const activeTheme = createTheme(theme ? dark : light);
     return (
@@ -46,5 +47,3 @@ const App = () => {
         </ThemeProvider>
     );
 };
-
-export default App;

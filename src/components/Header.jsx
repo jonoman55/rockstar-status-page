@@ -95,7 +95,7 @@ const Header = () => {
                 </ApiRoutes>
                 <Box sx={header} id="back-to-top-anchor">
                     <RockstarIcon />
-                    <Title component={Link} href='/' target='_self'>Rockstar Service Status</Title>
+                    <Title component={Link} href='/' target='_self'>Rockstar Services</Title>
                 </Box>
                 <Box sx={{ mx: 1 }}>
                     <Switch checked={theme} onClick={() => setTheme(!theme)} sx={thumb} />

@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-// https://jc-rockstar-status-api.herokuapp.com
 const baseURL = `${process.env.REACT_APP_API_URL}/api`;
 
 const axiosInstance = axios.create({ baseURL });
@@ -15,11 +14,11 @@ export const fetchApiStatus = async () => {
     }
 };
 
-// TODO : Remove /file when testing is done...
+// NOTE : Add /file to the api calls when testing...
 export const fetchAll = async (tz) => {
     try {
-        console.log('/file/all called...');
-        const { data } = await axiosInstance.get(`/file/all`, {
+        console.log('/all called...');
+        const { data } = await axiosInstance.get(`/all`, {
             params: { tz }
         });
         return data;
@@ -30,8 +29,8 @@ export const fetchAll = async (tz) => {
 
 export const fetchServices = async () => {
     try {
-        console.log('/file/services called...');
-        const { data } = await axiosInstance.get(`/file/services`);
+        console.log('/services called...');
+        const { data } = await axiosInstance.get(`/services`);
         return data;
     } catch (error) {
         console.log(error);
@@ -40,8 +39,8 @@ export const fetchServices = async () => {
 
 export const fetchServiceById = async (id) => {
     try {
-        console.log(`/file/services/${id} called...`);
-        const { data } = await axiosInstance.get(`/file/services/${id}`);
+        console.log(`/services/${id} called...`);
+        const { data } = await axiosInstance.get(`/services/${id}`);
         return data;
     } catch (error) {
         console.log(error);
@@ -50,8 +49,8 @@ export const fetchServiceById = async (id) => {
 
 export const fetchStatuses = async () => {
     try {
-        console.log('/file/statuses called...');
-        const { data } = await axiosInstance.get(`/file/statuses`);
+        console.log('/statuses called...');
+        const { data } = await axiosInstance.get(`/statuses`);
         return data;
     } catch (error) {
         console.log(error);
@@ -60,8 +59,8 @@ export const fetchStatuses = async () => {
 
 export const fetchStatusById = async (id) => {
     try {
-        console.log(`/file/statuses/${id} called...`);
-        const { data } = await axiosInstance.get(`/file/statuses/${id}`);
+        console.log(`/statuses/${id} called...`);
+        const { data } = await axiosInstance.get(`/statuses/${id}`);
         return data;
     } catch (error) {
         console.log(error);

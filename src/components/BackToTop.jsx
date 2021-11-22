@@ -3,8 +3,8 @@ import { KeyboardArrowUp } from '@mui/icons-material';
 
 const zoomBoxStyles = {
     position: 'fixed',
-    bottom: 80,
-    right: 18,
+    bottom: 100,
+    right: 15,
 };
 
 const UpIcon = styled(Fab)(({ theme }) => ({

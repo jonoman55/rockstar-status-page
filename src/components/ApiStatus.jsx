@@ -67,7 +67,7 @@ const ApiStatus = () => {
                         alt="logo"
                     />
                 )}
-                <CardContent sx={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap' }}>
+                <CardContent sx={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap', px: 2 }}>
                     <Typography variant='h5' sx={{ p: 2 }}>API</Typography>
                     <Paper component={Link} href={`${process.env.REACT_APP_API_URL}`} target='_blank' sx={{
                         p: 1, color: 'primary.contrastText', bgcolor: 'primary.main',
