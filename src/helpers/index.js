@@ -75,3 +75,13 @@ export const checkStatuses = (statuses) => {
     if (statuses.map((s) => s?.status.toLowerCase() === 'down'))
         return 'down';
 };
+
+// TODO : Complete this function - ref: IconArray.jsx
+export const fetchPlatformIcon = (platform) => {
+    switch (platform) {
+        case 'pc':  
+            break;
+        default:
+            break;
+    };
+};
