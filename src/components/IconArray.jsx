@@ -4,7 +4,7 @@ import { SiStadia as Stadia } from "react-icons/si";
 import { FaXbox as Xbox } from "react-icons/fa";
 
 // Icon Links
-// MUI List Comoponent: https://mui.com/components/lists/
+// MUI List Component: https://mui.com/components/lists/
 // MUI Icon component: https://mui.com/components/icons/
 // Material UI Icons: https://mui.com/components/material-icons/
 // FontAwesome: https://fontawesome.com/v5.15/icons?d=gallery&p=1
