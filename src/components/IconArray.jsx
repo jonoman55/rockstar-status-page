@@ -1,7 +1,24 @@
 import { Box, Icon, Stack } from "@mui/material";
-import { NotificationsActive } from "@mui/icons-material";
-import { SiStadia as Stadia } from "react-icons/si";
-import { FaXbox as Xbox } from "react-icons/fa";
+import {
+    Store,
+    NotificationsActive as Alert,
+    Security as Authentication,
+    Download as Downloads,
+    FactCheck as AllFeatures
+} from "@mui/icons-material";
+import {
+    FaXbox as Xbox,
+    FaDesktop as PC,
+    FaPlaystation as Playstation
+} from "react-icons/fa";
+import {
+    SiStadia as Stadia,
+    SiPlaystation4 as PS4,
+    SiPlaystation3 as PS3,
+    SiXbox as Xbox360
+} from "react-icons/si";
+import { AiOutlineCloudServer as CloudServices } from "react-icons/ai";
+import whiteLogo from '../images/svgs/white-logo.svg'
 
 // Icon Links
 // MUI List Component: https://mui.com/components/lists/
@@ -14,32 +31,82 @@ const IconArray = () => (
         p: 1, bgcolor: "primary.main", display: "flex", flexDirection: "row",
         flexWrap: "nowrap", justifyContent: "space-evenly", alignItems: "center",
     }}>
+        {/* PC */}
         <Icon
-            baseClassName="fas"
-            className="fa-desktop"
+            component={PC}
             sx={{ color: "#ffffff", width: 'auto' }}
         />
-        <Icon
-            baseClassName="fab"
-            className="fa-playstation"
-            sx={{ color: "#2196f3", width: 'auto' }}
-        />
-        <Icon
-            baseClassName="fab"
-            className="fa-xbox"
-            sx={{ color: "#9e9e9e", width: 'auto' }}
-        />
+        {/* Xbox One */}
         <Icon
             component={Xbox}
             sx={{ color: "#9bf00b", width: 'auto' }}
         />
+        {/* Xbox 360 */}
+        <Icon
+            component={Xbox360}
+            sx={{ color: "#00af00", width: 'auto' }}
+        />
+        {/* Xbox Cloud Gaming */}
+        <Icon
+            component={Xbox}
+            sx={{ color: "#9e9e9e", width: 'auto' }}
+        />
+        {/* Stadia */}
         <Icon
             component={Stadia}
-            sx={{  color: "#f44336", width: 'auto' }}
+            sx={{ color: "#f44336", width: 'auto' }}
         />
+        {/* Alert */}
         <Icon
-            component={NotificationsActive}
+            component={Alert}
             sx={{ color: "#ffeb3b", width: 'auto' }}
+        />
+        {/* Playstation */}
+        <Icon
+            component={Playstation}
+            sx={{ color: "#2196f3", width: 'auto' }}
+        />
+        {/* Playstation 3 */}
+        <Icon
+            component={PS3}
+            sx={{ color: "#2196f3", width: 'auto' }}
+        />
+        {/* Playstation 4 */}
+        <Icon
+            component={PS4}
+            sx={{ color: "#2196f3", width: 'auto' }}
+        />
+        {/* Authentication */}
+        <Icon
+            component={Authentication}
+            sx={{ color: "#ffffff", width: 'auto' }}
+        />
+        {/* Store */}
+        <Icon
+            component={Store}
+            sx={{ color: "#ffffff", width: 'auto' }}
+        />
+        {/* Cloud Services */}
+        <Icon
+            component={CloudServices}
+            sx={{ color: "#ffffff", width: 'auto' }}
+        />
+        {/* Downloads */}
+        <Icon
+            component={Downloads}
+            sx={{ color: "#ffffff", width: 'auto' }}
+        />
+        {/* All Features */}
+        <Icon
+            component={AllFeatures}
+            sx={{ color: "#ffffff", width: 'auto' }}
+        />
+        {/* Default */}
+        <Box
+            component="img"
+            src={whiteLogo}
+            alt="defualt"
+            sx={{ color: "#ffffff", width: '24px', height: '24px' }}
         />
     </Box>
 );

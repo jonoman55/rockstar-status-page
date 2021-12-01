@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+// TODO : replace /file to /api when testing is finished
 const baseURL = `${process.env.REACT_APP_API_URL}/api`;
 
 const axiosInstance = axios.create({ baseURL });
@@ -14,7 +15,6 @@ export const fetchApiStatus = async () => {
     }
 };
 
-// NOTE : Add /file to the api calls when testing...
 export const fetchAll = async (tz) => {
     try {
         console.log('/all called...');
