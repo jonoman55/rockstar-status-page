@@ -36,7 +36,7 @@ const ServicePageItem = ({ service, status }) => {
                     title={`${service?.name}`}
                     subheader={`${new Date(service?.updated).toLocaleString()}`}
                 />
-                <Box sx={{ pb: 2, display: 'flex', flexDirection: 'row', flexWrap: 'nowrap', alignItems: 'center', justifyContent: 'center' }}>
+                <Box sx={{ pb: 4, display: 'flex', flexDirection: 'row', flexWrap: 'nowrap', alignItems: 'center', justifyContent: 'center' }}>
                     <CardMedia sx={{
                         objectFit: 'scale-down', borderStyle: 'solid', borderWidth: 'thin', borderRadius: '2rem',
                         bgcolor: 'custom.light', height: '250px', maxWidth: '345px'
@@ -47,6 +47,11 @@ const ServicePageItem = ({ service, status }) => {
                         alt="logo"
                     />
                 </Box>
+                {service.message && (
+                    <CardContent>
+                        <Typography padding={1} paragraph>{service.message}</Typography>
+                    </CardContent>
+                )}
                 <CardContent sx={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap' }}>
                     <Typography variant="h6" fontWeight="bold">Service</Typography>
                     <Typography variant="p" sx={{ color: `${styleStatus(status?.status?.toLowerCase())}`, fontWeight: 'bold' }}>
