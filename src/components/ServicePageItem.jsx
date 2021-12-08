@@ -36,7 +36,9 @@ const ServicePageItem = ({ service, status }) => {
                     title={`${service?.name}`}
                     subheader={`${new Date(service?.updated).toLocaleString()}`}
                 />
-                <Box sx={{ pb: 4, display: 'flex', flexDirection: 'row', flexWrap: 'nowrap', alignItems: 'center', justifyContent: 'center' }}>
+                <Box sx={{
+                    pb: 4, display: 'flex', flexDirection: 'row', flexWrap: 'nowrap', alignItems: 'center', justifyContent: 'center'
+                }}>
                     <CardMedia sx={{
                         objectFit: 'scale-down', borderStyle: 'solid', borderWidth: 'thin', borderRadius: '2rem',
                         bgcolor: 'custom.light', height: '250px', maxWidth: '345px'
