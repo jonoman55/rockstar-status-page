@@ -8,10 +8,10 @@ import { useAppContext } from '../contexts/AppContext';
 import { styleStatus, fetchImage, fetchStatusIcon, checkStatuses } from '../helpers';
 import { usePathname } from '../hooks/usePathname';
 
-// https://mui.com/components/cards/#main-content
-// TODO : Implement platform status and service message
-// TODO : Add a ApiStatus Card
-// TODO : Add a component with the different type of status icon indicators (UP/LIMITED/DOWN)
+// TODO : Add a Statuses Card Grid
+// TODO : Add a ApiStatus Card Card
+// TODO : Add a Card with the different type of status icon indicators (UP/LIMITED/DOWN)
+// TODO : Center the Grid component
 const OverallStatus = () => {
     const navigate = useNavigate();
     const pathname = usePathname();
