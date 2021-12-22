@@ -2,8 +2,8 @@ import { useNavigate } from 'react-router-dom';
 import { styled, Avatar, Box, Typography, Card, CardHeader, CardMedia, CardContent, CardActions, IconButton, Paper, Link, Stack, Divider } from '@mui/material';
 import { Wifi as WifiIcon, Refresh as RefreshIcon } from '@mui/icons-material';
 import RockstarLoader from './RockstarLoader';
-import { useAppContext } from '../contexts/AppContext';
 import { styleStatus, fetchImage, fetchStatusIcon } from '../helpers';
+import { useAppContext } from '../contexts/AppContext';
 import { usePathname } from '../hooks/usePathname';
 
 const Container = styled(Box)(({ theme }) => ({
@@ -86,7 +86,7 @@ const ApiStatus = () => {
                         </Stack>
                         <Divider sx={{ pt: 1 }} />
                         <Box component='span' sx={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', py: 1 }}>
-                            {apiStatus?.updated}
+                            {`Updated: ${apiStatus?.updated}`}
                         </Box>
                     </Paper>
                 </CardContent>

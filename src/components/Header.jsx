@@ -82,9 +82,11 @@ const thumb = {
     },
 };
 
-const RockstarIcon = () =>
-    <Box component='img' src={logo} alt='logo' sx={{ height: 50, width: 50, pr: 1, ml: 1 }} />;
+const RockstarIcon = () => (
+    <Box component='img' src={logo} alt='logo' sx={{ height: 50, width: 50, pr: 1, ml: 1 }} />
+);
 
+// TODO : Fix the logo position on mobile 
 const Header = () => {
     const { theme, setTheme } = useThemeContext();
     return (

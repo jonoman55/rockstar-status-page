@@ -1,15 +1,17 @@
-import { useNavigate } from 'react-router-dom';
-import { Avatar, Box, Typography, Card, CardHeader, CardMedia, CardContent, CardActions, IconButton, Paper, Link, Stack, Divider, Grid } from '@mui/material';
+import { useNavigate, NavLink } from 'react-router-dom';
+import { Avatar, Box, Card, CardHeader, CardMedia, CardContent, CardActions, IconButton, Paper, Grid } from '@mui/material';
 import { Wifi as WifiIcon, Refresh as RefreshIcon } from '@mui/icons-material';
 import RockstarLoader from './RockstarLoader';
+import RockstarStatusItem from './RockstarStatusItem';
+import OverAllStatusItem from './OverallStatusItem';
 import { useAppContext } from '../contexts/AppContext';
 import { styleStatus, fetchImage, fetchStatusIcon, checkStatuses } from '../helpers';
 import { usePathname } from '../hooks/usePathname';
 
 // https://mui.com/components/cards/#main-content
-// TODO : Get all statuses and include them in this Card (nicely formatted in CardContent)
+// TODO : Implement platform status and service message
+// TODO : Add a ApiStatus Card
 // TODO : Add a component with the different type of status icon indicators (UP/LIMITED/DOWN)
-// TODO : finish implementing the Grid component
 const OverallStatus = () => {
     const navigate = useNavigate();
     const pathname = usePathname();
@@ -18,6 +20,7 @@ const OverallStatus = () => {
         tabValue,
         isLoading,
         services,
+        statuses,
         updated
     } = useAppContext();
 
@@ -57,29 +60,13 @@ const OverallStatus = () => {
                     alt="logo"
                 />
                 <CardContent sx={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap', pt: 4, px: 2 }}>
-                    <Paper component={Link} href={"https://support.rockstargames.com/servicestatus"} target='_blank' sx={{
-                        p: 1, color: 'primary.contrastText', bgcolor: 'primary.main', textDecoration: 'none', minHeight: '125px', 
-                        '&:hover': { color: 'primary.contrastText', bgcolor: 'custom.disabled', opacity: 1 }
-                    }}>
-                        <Typography variant='h6' sx={{ color: 'custom.main' }}>Overall Status</Typography>
-                        <Divider sx={{ pb: 1 }} />
-                        <Stack direction='row' sx={{ pt: 1 }}>
-                            <Typography sx={{ pr: 1 }}>Status:</Typography>
-                            <Typography variant='body1' sx={{ color: color, fontWeight: 'bold' }}>
-                                {checkStatuses(services).toUpperCase()}
-                            </Typography>
-                        </Stack>
-                        <Divider sx={{ pt: 1 }} />
-                        <Box component='span' sx={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', py: 1 }}>
-                            {`${updated}`}
-                        </Box>
-                    </Paper>
-                    <Grid container spacing={2}>
+                    <RockstarStatusItem services={services} statuses={statuses} updated={updated} />
+                    <Grid container spacing={2} sx={{ pt: 2 }} justifyContent='center'>
                         {services?.map((service, index) => (
-                            <Grid item key={index} xs={12} sm={12} md={12} lg={12}>
-                                <Box component={Paper} sx={{ bgcolor: 'primary.main' }}>
-                                    {/* service and their status */}
-                                </Box>
+                            <Grid component={NavLink} to={`/service/${service?.id}`} item key={index} xs={12} sm={12} md={6} lg={4} xl={4} sx={{
+                                bgcolor: 'primary.light', textDecoration: 'none', p: 1
+                            }}>
+                                <OverAllStatusItem service={service} />
                             </Grid>
                         ))}
                     </Grid>

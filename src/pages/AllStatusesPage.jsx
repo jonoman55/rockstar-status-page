@@ -1,9 +1,6 @@
 import { Box } from '@mui/material';
 import RockstarLoader from '../components/RockstarLoader';
 import TabGroup from '../components/TabGroup';
-import ApiStatus from '../components/ApiStatus';
-import ServiceList from '../components/ServicesList';
-import StatusesList from '../components/StatusesList'
 import OverallStatus from '../components/OverallStatus';
 import { useAppContext } from '../contexts/AppContext';
 
@@ -25,9 +22,6 @@ const AllStatusesPage = () => {
                         {tabValue === 0 && (
                             <>
                                 <OverallStatus />
-                                <ApiStatus />
-                                <ServiceList />
-                                <StatusesList />
                             </>
                         )}
                     </>
