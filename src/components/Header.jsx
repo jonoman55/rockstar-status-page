@@ -36,8 +36,10 @@ const Title = styled(Box)(({ theme }) => ({
     textAlign: 'center',
     fontWeight: 'bold',
     textDecoration: 'none',
-    color: theme.palette.secondary.contrastText,
-    backgroundColor: theme.palette.custom.main,
+    color: theme.palette.custom.dark,
+    '&:hover': {
+        color: theme.palette.custom.light,
+    },
     [theme.breakpoints.down('md')]: {
         fontSize: 18,
     },
@@ -56,8 +58,6 @@ const ApiRoutes = styled(Link)(({ theme }) => ({
     textDecoration: 'none',
     fontWeight: 'bold',
     paddingLeft: theme.spacing(1.5),
-    color: theme.palette.primary.contrastText,
-    backgroundColor: theme.palette.custom.main,
     [theme.breakpoints.down('md')]: {
         fontSize: 12,
     },
@@ -70,10 +70,11 @@ const ApiRoutes = styled(Link)(({ theme }) => ({
 }));
 
 const link = {
+    color: 'custom.dark',
     '&:hover': {
+        color: 'custom.light',
         cursor: 'pointer',
-        color: 'secondary.contrastText',
-    }
+    },
 };
 
 const thumb = {

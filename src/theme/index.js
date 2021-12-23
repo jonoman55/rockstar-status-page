@@ -68,7 +68,7 @@ const scrollBodyDark = {
 // MUIv5 themes
 export const light = {
   palette: {
-    type: "light",
+    mode: "light",
     primary: {
       main: "#f2f2f2",
       light: "#ffffff",
@@ -94,7 +94,7 @@ export const light = {
 
 export const dark = {
   palette: {
-    type: "dark",
+    mode: "dark",
     primary: {
       main: "#424242",
       light: "#6d6d6d",

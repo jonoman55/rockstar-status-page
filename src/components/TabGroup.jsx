@@ -39,7 +39,7 @@ const TabGroup = () => {
     }, [tabValue, navigate]);
 
     return (
-        <AppBar component='div' position="relative" elevation={1} sx={{ mb: 2, width: '100%' }}>
+        <AppBar component='div' position="relative" elevation={1} sx={{ width: '100%' }}>
             <Paper sx={{ color: 'primary.contrastText', bgcolor: 'primary.dark', borderRadius: .25 }}>
                 <Box sx={{ borderBottom: 1, borderColor: 'divider', display: 'flex', justifyContent: 'center' }}>
                     <Tabs value={tabValue} onChange={handleChange}>
