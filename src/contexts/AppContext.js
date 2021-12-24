@@ -76,21 +76,31 @@ export const AppContextProvider = (props) => {
         }
     };
 
-    const simulateLoading = async () => {
+    const simulateLoading = async (milliseconds) => {
+        try {
+            await sleep(milliseconds);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const getAllData = async () => {
         setIsLoading(true);
-        await sleep(2000);
+        await getUpdated();
+        await getApiStatus();
+        await getServices();
+        await getStatuses();
+        await simulateLoading(2000);
         setIsLoading(false);
     };
 
     useEffect(() => {
-        getUpdated();
-        getApiStatus();
-        getServices();
-        getStatuses();
-        simulateLoading();
+        getAllData();
+        // eslint-disable-next-line
     }, []);
 
     const value = {
+        getAllData,
         apiStatus,
         setApiStatus,
         getApiStatus,

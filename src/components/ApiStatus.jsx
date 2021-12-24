@@ -1,24 +1,11 @@
 import { useNavigate } from 'react-router-dom';
-import { styled, Avatar, Box, Typography, Card, CardHeader, CardMedia, CardContent, CardActions, IconButton, Paper, Link, Stack, Divider } from '@mui/material';
+import { Avatar, Box, Typography, Card, CardHeader, CardMedia, CardContent, CardActions, IconButton, Paper, Link, Stack, Divider } from '@mui/material';
 import { Wifi as WifiIcon, Refresh as RefreshIcon } from '@mui/icons-material';
-import RockstarLoader from './RockstarLoader';
+import { RockstarLoader } from './RockstarLoader';
+import { Container, ApiTitle } from './styles/ApiStatus.styled';
 import { styleStatus, fetchImage, fetchStatusIcon } from '../helpers';
 import { useAppContext } from '../contexts/AppContext';
 import { usePathname } from '../hooks/usePathname';
-
-const Container = styled(Box)(({ theme }) => ({
-    width: '100%',
-    backgroundColor: theme.palette.primary.main,
-    color: theme.palette.primary.contrastText,
-    padding: theme.spacing(2),
-    [theme.breakpoints.down('sm')]: {
-        height: '100%',
-        paddingBottom: theme.spacing(3.5),
-    },
-    [theme.breakpoints.up('lg')]: {
-        height: '100%',
-    },
-}));
 
 const ApiStatus = () => {
     const navigate = useNavigate();
@@ -36,7 +23,7 @@ const ApiStatus = () => {
     return (
         <Container>
             <Card sx={{
-                p: 1, alignContent: 'flex-start', justifyContent: 'center', alignItems: 'center',
+                alignContent: 'flex-start', justifyContent: 'center', alignItems: 'center',
                 bgcolor: 'primary.light', color: 'primary.contrastText',
                 '& .MuiCardHeader-title': { color: 'primary.contrastText', pr: tabValue === 3 && 1 },
                 '& .MuiCardHeader-subheader': { color: 'primary.contrastText', pr: tabValue === 3 && 1 }
@@ -67,16 +54,12 @@ const ApiStatus = () => {
                         alt="logo"
                     />
                 )}
-                <CardContent sx={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap', px: 2 }}>
-                    <Typography variant='h5' sx={{ p: 2 }}>API</Typography>
+                <CardContent sx={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap', pt: 4, px: 2, mt: 2 }}>
                     <Paper component={Link} href={`${process.env.REACT_APP_API_URL}`} target='_blank' sx={{
-                        p: 1, color: 'primary.contrastText', bgcolor: 'primary.main',
-                        textDecoration: 'none', minHeight: '125px', 
-                        '&:hover': { color: 'primary.contrastText', bgcolor: 'custom.disabled', opacity: 1 }
+                        color: 'primary.contrastText', bgcolor: 'primary.main', textDecoration: 'none', minHeight: '125px', 
+                        '&:hover': { color: 'primary.contrastText', bgcolor: 'custom.disabled', opacity: 1 }, p: 1
                     }}>
-                        <Typography variant='h6' sx={{ color: 'custom.main' }}>
-                            {apiStatus?.message}
-                        </Typography>
+                        <ApiTitle variant='h6'>{apiStatus?.message}</ApiTitle>
                         <Divider sx={{ pb: 1 }} />
                         <Stack direction='row' sx={{ pt: 1 }}>
                             <Typography sx={{ pr: 1 }}>Status:</Typography>
@@ -85,7 +68,9 @@ const ApiStatus = () => {
                             </Typography>
                         </Stack>
                         <Divider sx={{ pt: 1 }} />
-                        <Box component='span' sx={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', py: 1 }}>
+                        <Box component='span' sx={{ 
+                            display: 'flex', flexDirection: 'row', alignItems: 'flex-start', py: 1 
+                        }}>
                             {`Updated: ${apiStatus?.updated}`}
                         </Box>
                     </Paper>

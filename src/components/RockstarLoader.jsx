@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 import loading from '../images/loading.gif';
 
-const RockstarLoader = () => (
+export const RockstarLoader = () => (
     <Box sx={{
         height: '85.95vh', bgcolor: 'custom.gray', display: 'flex', alignItems: 'center', justifyContent: 'center', m: 0
     }}>
@@ -10,5 +10,3 @@ const RockstarLoader = () => (
         }} />
     </Box>
 );
-
-export default RockstarLoader;

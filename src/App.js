@@ -1,48 +1,20 @@
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import { styled, createTheme, CssBaseline, ThemeProvider, Box } from '@mui/material';
-import { useThemeContext } from './contexts/ThemeContext';
+import Routes from './routes';
+import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
 import { light, dark } from './theme';
-import HomePage from './pages/HomePage';
-import ServicePage from './pages/ServicePage';
-import AllStatusesPage from './pages/AllStatusesPage';
-import ServicesPage from './pages/ServicesPage';
-import StatusesPage from './pages/StatusesPage';
-import ApiStatusPage from './pages/ApiStatusPage';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import BackToTop from './components/BackToTop';
+import { useThemeContext } from './contexts/ThemeContext';
 
-const Container = styled(Box)(({ theme }) => ({
-    width: '100%',
-    height: '100%',
-    minHeight: '85.6vh',
-    backgroundColor: theme.palette.primary.main,
-}));
-
-// TODO : need to finish implementing overall layout once components are finished
-// TODO : Add a dropdown where you can select a different TimeZone
+// TODO : Add a Dropdown Menu where you can select a different TimeZone ?tz=America/New_York
+// TODO : Add all the menu options for TimeZone to menuItems.js file in the constants folder
+// TODO : Replace the CardHeader Avatar Icon with the CardAction Icon for each Card component
+// TODO : Make a cards folder and move all Card components to it
+// TODO : Rename any Card components i.e ServiceCard.jsx
 export default function App() {
     const { theme } = useThemeContext();
     const activeTheme = createTheme(theme ? dark : light);
     return (
         <ThemeProvider theme={activeTheme}>
             <CssBaseline />
-            <Router>
-                <Header />
-                <Container component='main'>
-                    <Routes>
-                        <Route path='/' element={<HomePage />} exact />
-                        <Route path='*' element={<Navigate to='/all' />} />
-                        <Route path='/all' element={<AllStatusesPage />} exact />
-                        <Route path='/services' element={<ServicesPage />} exact />
-                        <Route path='/statuses' element={<StatusesPage />} exact />
-                        <Route path='/api' element={<ApiStatusPage />} exact />
-                        <Route path='/service/:id' element={<ServicePage />} exact />
-                    </Routes>
-                    <BackToTop />
-                </Container>
-                <Footer />
-            </Router>
+            <Routes />
         </ThemeProvider>
     );
 };

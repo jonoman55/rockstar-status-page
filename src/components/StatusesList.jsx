@@ -1,7 +1,7 @@
 import { NavLink, useNavigate } from 'react-router-dom';
-import { Avatar, Box, Typography, Card, CardHeader, CardMedia, CardContent, CardActions, IconButton, Paper, Grid } from '@mui/material';
+import { Avatar, Box, Card, CardHeader, CardMedia, CardContent, CardActions, IconButton, Paper, Grid } from '@mui/material';
 import { Wifi as WifiIcon, Refresh as RefreshIcon } from '@mui/icons-material';
-import RockstarLoader from './RockstarLoader';
+import { RockstarLoader } from './RockstarLoader';
 import StatusItem from './StatusItem';
 import { useAppContext } from '../contexts/AppContext';
 import { styleStatus, fetchImage, fetchStatusIcon, checkStatuses } from '../helpers';
@@ -26,7 +26,7 @@ const StatusesList = () => {
             p: 2, pb: 3.5, height: '100%'
         }}>
             <Card sx={{
-                p: 1, alignContent: 'flex-start', justifyContent: 'center', alignItems: 'center',
+                alignContent: 'flex-start', justifyContent: 'center', alignItems: 'center',
                 bgcolor: 'primary.light', color: 'primary.contrastText',
                 '& .MuiCardHeader-title': { color: 'primary.contrastText', pr: tabValue === 2 && 1 },
                 '& .MuiCardHeader-subheader': { color: 'primary.contrastText', pr: tabValue === 2 && 1 }
@@ -57,8 +57,7 @@ const StatusesList = () => {
                         alt="logo"
                     />
                 )}
-                <CardContent sx={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap' }}>
-                    <Typography variant='h5' sx={{ p: 2 }}>Statuses</Typography>
+                <CardContent sx={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap', pt: 4, px: 2, mt: 2 }}>
                     <Grid container spacing={2}>
                         {statuses?.map((status, index) => (
                             <Grid component={NavLink} to={`/service/${status?.id}`} item key={index} xs={12} sm={12} md={12} lg={12} sx={{

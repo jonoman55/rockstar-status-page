@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Box } from '@mui/material';
+import { RockstarLoader } from '../components/RockstarLoader';
 import NavBar from '../components/NavBar';
-import RockstarLoader from '../components/RockstarLoader';
 import ServicePageItem from '../components/ServicePageItem';
 import { useAppContext } from '../contexts/AppContext';
 

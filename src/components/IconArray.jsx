@@ -20,6 +20,7 @@ import {
 import { AiOutlineCloudServer as CloudServices } from "react-icons/ai";
 import whiteLogo from '../images/svgs/white-logo.svg'
 
+// TODO : Remove from project
 // Icon Links
 // MUI List Component: https://mui.com/components/lists/
 // MUI Icon component: https://mui.com/components/icons/

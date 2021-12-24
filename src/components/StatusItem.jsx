@@ -3,7 +3,7 @@ import Platforms from './Platforms';
 import { styleStatus } from '../helpers';
 
 const StatusItem = ({ status }) => (
-    <Box component={Paper} sx={{
+    <Paper sx={{
         p: 1, color: 'primary.contrastText', bgcolor: 'primary.main',
         '&:hover': { color: 'primary.contrastText', bgcolor: 'custom.disabled', opacity: 1 }
     }}>
@@ -27,7 +27,7 @@ const StatusItem = ({ status }) => (
         {status?.services_platforms && (
             <Platforms platforms={status?.services_platforms} />
         )}
-    </Box>
+    </Paper>
 );
 
 export default StatusItem;

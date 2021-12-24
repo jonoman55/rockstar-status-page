@@ -1,91 +1,6 @@
-import { styled, AppBar, Toolbar, Box, Link, Switch } from '@mui/material';
+import { AppBar, Toolbar, Box, Link, Switch } from '@mui/material';
+import { HeaderTitle, ApiRoutesLink, RockstarIcon, appbar, toolbar, header, link, thumb } from './styles/Header.styled';
 import { useThemeContext } from '../contexts/ThemeContext';
-import logo from '../images/svgs/logo.svg';
-
-const appbar = {
-    fontFamily: 'Roboto',
-    backgroundColor: 'custom.main',
-    borderBottom: 'solid',
-    borderWidth: '2px',
-};
-
-const toolbar = {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    height: 85,
-};
-
-const header = {
-    display: 'flex',
-    justifyContent: 'space-around',
-    alignContent: 'space-around',
-    marginRight: '16px',
-    flexDirection: 'row',
-    alignItems: 'center',
-    color: 'primary.contrastText',
-    textDecoration: 'none',
-    '&:hover': {
-        color: 'secondary.contrastText',
-        cursor: 'pointer',
-        textDecoration: 'none'
-    }
-};
-
-const Title = styled(Box)(({ theme }) => ({
-    textAlign: 'center',
-    fontWeight: 'bold',
-    textDecoration: 'none',
-    color: theme.palette.custom.dark,
-    '&:hover': {
-        color: theme.palette.custom.light,
-    },
-    [theme.breakpoints.down('md')]: {
-        fontSize: 18,
-    },
-    [theme.breakpoints.up('md')]: {
-        fontSize: 36,
-    },
-    [theme.breakpoints.up('lg')]: {
-        fontSize: 36,
-    },
-}));
-
-const ApiRoutes = styled(Link)(({ theme }) => ({
-    minWidth: '100px',
-    textAlign: 'center',
-    textTransform: 'uppercase',
-    textDecoration: 'none',
-    fontWeight: 'bold',
-    paddingLeft: theme.spacing(1.5),
-    [theme.breakpoints.down('md')]: {
-        fontSize: 12,
-    },
-    [theme.breakpoints.up('md')]: {
-        fontSize: 18,
-    },
-    [theme.breakpoints.up('lg')]: {
-        fontSize: 18,
-    },
-}));
-
-const link = {
-    color: 'custom.dark',
-    '&:hover': {
-        color: 'custom.light',
-        cursor: 'pointer',
-    },
-};
-
-const thumb = {
-    '& .MuiSwitch-thumb': {
-        color: 'primary.contrastText',
-    },
-};
-
-const RockstarIcon = () => (
-    <Box component='img' src={logo} alt='logo' sx={{ height: 50, width: 50, pr: 1, ml: 1 }} />
-);
 
 // TODO : Fix the logo position on mobile 
 const Header = () => {
@@ -93,12 +8,12 @@ const Header = () => {
     return (
         <AppBar position='static' elevation={2} sx={appbar}>
             <Toolbar disableGutters sx={toolbar}>
-                <ApiRoutes href={`${process.env.REACT_APP_API_URL}`} target='_blank' sx={link}>
+                <ApiRoutesLink href={`${process.env.REACT_APP_API_URL}`} target='_blank' sx={link}>
                     API Routes
-                </ApiRoutes>
+                </ApiRoutesLink>
                 <Box sx={header} id="back-to-top-anchor">
                     <RockstarIcon />
-                    <Title component={Link} href='/' target='_self'>Rockstar Services</Title>
+                    <HeaderTitle component={Link} href='/' target='_self'>Rockstar Services</HeaderTitle>
                 </Box>
                 <Box sx={{ mx: 1 }}>
                     <Switch checked={theme} onClick={() => setTheme(!theme)} sx={thumb} />

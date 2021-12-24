@@ -1,6 +1,9 @@
 import { Box, Icon } from "@mui/material";
 import {
-    Store, OfflinePin, OfflineBolt,
+    Store, 
+    OfflinePin, 
+    OfflineBolt,
+    Error,
     NotificationsActive as Alert,
     Security as Authentication,
     Download as Downloads,
@@ -81,7 +84,7 @@ export const fetchStatusIcon = (status) => {
         case 'limited':
             return <OfflineBolt fontSize='large' sx={{ color: '#fff700' }} />;
         case 'down':
-            return  <OfflineBolt fontSize='large' sx={{ color: '#f50202' }} />;
+            return  <Error fontSize='large' sx={{ color: '#f50202' }} />;
         default:
             return <OfflinePin fontSize='large' sx={{ color: '#0cf223' }} />;
     };

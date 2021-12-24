@@ -1,5 +1,5 @@
 import { Box } from '@mui/material';
-import RockstarLoader from '../components/RockstarLoader';
+import { RockstarLoader } from '../components/RockstarLoader';
 import TabGroup from '../components/TabGroup';
 import ServiceList from '../components/ServicesList';
 import { useAppContext } from '../contexts/AppContext';

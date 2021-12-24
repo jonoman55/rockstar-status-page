@@ -1,26 +1,13 @@
-import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { styled, AppBar, Box, Paper, Tabs, Tab } from '@mui/material';
+import { AppBar, Paper, Tabs } from '@mui/material';
+import { Tab, a11yProps } from './styles/TabGroup.styled';
 import { useAppContext } from '../contexts/AppContext';
-
-function a11yProps(index) {
-    return {
-        id: `simple-tab-${index}`,
-        'aria-controls': `simple-tabpanel-${index}`,
-    };
-};
-
-const CustomTab = styled(Tab)(({ theme }) => ({
-    padding: theme.spacing(0),
-    color: theme.palette.primary.contrastText,
-    '&.Mui-selected': {
-        color: theme.palette.custom.main,
-    },
-}));
+import { useEffect } from 'react';
 
 const TabGroup = () => {
     const navigate = useNavigate();
     const { tabValue, setTabValue } = useAppContext();
+
     const handleChange = (event, newValue) => setTabValue(newValue);
 
     useEffect(() => {
@@ -39,16 +26,14 @@ const TabGroup = () => {
     }, [tabValue, navigate]);
 
     return (
-        <AppBar component='div' position="relative" elevation={1} sx={{ width: '100%' }}>
+        <AppBar component='div' position='relative' elevation={1} sx={{ width: '100%' }}>
             <Paper sx={{ color: 'primary.contrastText', bgcolor: 'primary.dark', borderRadius: .25 }}>
-                <Box sx={{ borderBottom: 1, borderColor: 'divider', display: 'flex', justifyContent: 'center' }}>
-                    <Tabs value={tabValue} onChange={handleChange}>
-                        <CustomTab label="All"  {...a11yProps(0)} />
-                        <CustomTab label="Services"  {...a11yProps(1)} />
-                        <CustomTab label="Statuses" {...a11yProps(2)} />
-                        <CustomTab label="API" {...a11yProps(3)} />
-                    </Tabs>
-                </Box>
+                <Tabs value={tabValue} onChange={handleChange} centered variant='fullWidth'>
+                    <Tab label='All' {...a11yProps(0)} />
+                    <Tab label='Services' {...a11yProps(1)} />
+                    <Tab label='Statuses' {...a11yProps(2)} />
+                    <Tab label='API' {...a11yProps(3)} />
+                </Tabs>
             </Paper>
         </AppBar>
     );

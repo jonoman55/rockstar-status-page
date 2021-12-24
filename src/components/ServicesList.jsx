@@ -1,7 +1,7 @@
 import { NavLink, useNavigate } from 'react-router-dom';
-import { Avatar, Box, Typography, Card, CardHeader, CardMedia, CardContent, CardActions, IconButton, Paper, Grid } from '@mui/material';
+import { Avatar, Box, Card, CardHeader, CardMedia, CardContent, CardActions, IconButton, Paper, Grid } from '@mui/material';
 import { Wifi as WifiIcon, Refresh as RefreshIcon } from '@mui/icons-material';
-import RockstarLoader from './RockstarLoader';
+import { RockstarLoader } from './RockstarLoader';
 import ServiceItem from './ServiceItem';
 import { useAppContext } from '../contexts/AppContext';
 import { styleStatus, fetchImage, fetchStatusIcon, checkStatuses } from '../helpers';
@@ -27,7 +27,7 @@ const ServicesList = () => {
             p: 2, pb: tabValue === 1 ? 3.5 : 2, height: '100%'
         }}>
             <Card sx={{
-                p: 1, alignContent: 'flex-start', justifyContent: 'center', alignItems: 'center',
+                alignContent: 'flex-start', justifyContent: 'center', alignItems: 'center',
                 bgcolor: 'primary.light', color: 'primary.contrastText',
                 '& .MuiCardHeader-title': { color: 'primary.contrastText', pr: tabValue === 1 && 1 },
                 '& .MuiCardHeader-subheader': { color: 'primary.contrastText', pr: tabValue === 1 && 1 }
@@ -51,15 +51,14 @@ const ServicesList = () => {
                 />
                 {tabValue === 1 && (
                     <CardMedia
-                        sx={{ objectFit: 'contain' }}
+                        sx={{ objectFit: 'contain'}}
                         component="img"
                         height="198px"
                         image={fetchImage(0)}
                         alt="logo"
                     />
                 )}
-                <CardContent sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
-                    <Typography variant='h5' sx={{ p: 2 }}>Services</Typography>
+                <CardContent sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', pt: 4, px: 2, mt: 2 }}>
                     <Grid container spacing={2}>
                         {services.map((service, index) => (
                             <Grid component={NavLink} to={`/service/${service?.id}`} item key={index} xs={12} sm={12} md={12} lg={6} sx={{

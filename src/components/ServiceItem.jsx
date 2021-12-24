@@ -1,17 +1,6 @@
-import { styled, Box, Divider, Paper, Stack, Typography } from '@mui/material';
+import { Box, Divider, Paper, Stack, Typography } from '@mui/material';
+import { FlexText } from './controls/FlexText';
 import { styleStatus } from '../helpers';
-
-const FlexText = styled(Typography)(({ theme })=>({
-    [theme.breakpoints.down('sm')]: {
-        fontSize: 14,
-    },
-    [theme.breakpoints.up('sm')]: {
-        fontSize: 14,
-    },
-    [theme.breakpoints.up('lg')]: {
-        fontSize: 18,
-    },
-}));
 
 const ServiceItem = ({ service }) => (
     <Box component={Paper} sx={{
