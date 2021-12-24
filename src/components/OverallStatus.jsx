@@ -4,14 +4,12 @@ import { Wifi as WifiIcon, Refresh as RefreshIcon } from '@mui/icons-material';
 import RockstarLoader from './RockstarLoader';
 import RockstarStatusItem from './RockstarStatusItem';
 import OverAllStatusItem from './OverallStatusItem';
+import StatusIndicators from './StatusIndicators';
 import { useAppContext } from '../contexts/AppContext';
 import { styleStatus, fetchImage, fetchStatusIcon, checkStatuses } from '../helpers';
 import { usePathname } from '../hooks/usePathname';
 
-// TODO : Add a Statuses Card Grid
-// TODO : Add a ApiStatus Card Card
-// TODO : Add a Card with the different type of status icon indicators (UP/LIMITED/DOWN)
-// TODO : Center the Grid component
+// TODO : Add Platform Statuses Cards Grid
 const OverallStatus = () => {
     const navigate = useNavigate();
     const pathname = usePathname();
@@ -60,16 +58,21 @@ const OverallStatus = () => {
                     alt="logo"
                 />
                 <CardContent sx={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap', pt: 4, px: 2 }}>
-                    <RockstarStatusItem services={services} statuses={statuses} updated={updated} />
+                    <RockstarStatusItem 
+                        services={services} 
+                        statuses={statuses} 
+                        updated={updated} 
+                    />
                     <Grid container spacing={2} sx={{ pt: 2 }} justifyContent='center'>
                         {services?.map((service, index) => (
                             <Grid component={NavLink} to={`/service/${service?.id}`} item key={index} xs={12} sm={12} md={6} lg={4} xl={4} sx={{
-                                bgcolor: 'primary.light', textDecoration: 'none', p: 1
+                               textDecoration: 'none', p: 1
                             }}>
                                 <OverAllStatusItem service={service} />
                             </Grid>
                         ))}
                     </Grid>
+                    <StatusIndicators />     
                 </CardContent>
                 <CardActions disableSpacing sx={{ flexDirection: 'column', alignItems: 'flex-end' }}>
                     {fetchStatusIcon(checkStatuses(services))}
