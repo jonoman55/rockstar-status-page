@@ -5,8 +5,8 @@ import RockstarLoader from './RockstarLoader';
 import RockstarStatusItem from './RockstarStatusItem';
 import OverAllStatusItem from './OverallStatusItem';
 import StatusIndicators from './StatusIndicators';
-import { useAppContext } from '../contexts/AppContext';
 import { styleStatus, fetchImage, fetchStatusIcon, checkStatuses } from '../helpers';
+import { useAppContext } from '../contexts/AppContext';
 import { usePathname } from '../hooks/usePathname';
 
 // TODO : Add Platform Statuses Cards Grid
@@ -26,7 +26,7 @@ const OverallStatus = () => {
 
     if (isLoading) return <RockstarLoader />;
     return (
-        <Box component={Paper} sx={{ p: 2, bgcolor: 'primary.main', color: 'primary.contrastText' }}>
+        <Paper sx={{ p: 2, bgcolor: 'primary.main', color: 'primary.contrastText' }}>
             <Card sx={{
                 p: 1, alignContent: 'flex-start', justifyContent: 'center', alignItems: 'center',
                 bgcolor: 'primary.light', color: 'primary.contrastText',
@@ -58,27 +58,31 @@ const OverallStatus = () => {
                     alt="logo"
                 />
                 <CardContent sx={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap', pt: 4, px: 2 }}>
-                    <RockstarStatusItem 
-                        services={services} 
-                        statuses={statuses} 
-                        updated={updated} 
-                    />
+                    <Box sx={{ display: 'flex', width: '100%', justifyContent: 'center' }}>
+                        <RockstarStatusItem 
+                            services={services} 
+                            statuses={statuses} 
+                            updated={updated} 
+                        />
+                    </Box> 
                     <Grid container spacing={2} sx={{ pt: 2 }} justifyContent='center'>
                         {services?.map((service, index) => (
                             <Grid component={NavLink} to={`/service/${service?.id}`} item key={index} xs={12} sm={12} md={6} lg={4} xl={4} sx={{
-                               textDecoration: 'none', p: 1
+                               textDecoration: 'none', p: 0.5
                             }}>
                                 <OverAllStatusItem service={service} />
                             </Grid>
                         ))}
                     </Grid>
-                    <StatusIndicators />     
+                    <Box sx={{ display: 'flex', width: '100%', justifyContent: 'center' }}>
+                        <StatusIndicators />   
+                    </Box>  
                 </CardContent>
                 <CardActions disableSpacing sx={{ flexDirection: 'column', alignItems: 'flex-end' }}>
                     {fetchStatusIcon(checkStatuses(services))}
                 </CardActions>
             </Card>
-        </Box>
+        </Paper>
     );
 };
 
