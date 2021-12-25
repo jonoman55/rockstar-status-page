@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
-import { RockstarLoader } from '../components/RockstarLoader';
-import TabGroup from '../components/TabGroup';
-import ApiStatus from '../components/ApiStatus';
+import { RockstarLoader } from '../components/other/RockstarLoader';
+import TabGroup from '../components/other/TabGroup';
+import ApiStatusCard from '../components/cards/ApiStatusCard';
 import { useAppContext } from '../contexts/AppContext';
 
 const ApiStatusPage = () => {
@@ -12,18 +12,11 @@ const ApiStatusPage = () => {
     } = useAppContext();
 
     if (isLoading) return <RockstarLoader />;
-    return (
+    else return (
         <>
             <TabGroup />
             <Box>
-                {apiStatus?.success && !isLoading && (
-                    <>
-                        {/* API Status */}
-                        {tabValue === 3 && (
-                            <ApiStatus />
-                        )}
-                    </>
-                )}
+                {apiStatus?.success && !isLoading && tabValue === 3 && <ApiStatusCard />}
             </Box>
         </>
     );

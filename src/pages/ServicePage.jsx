@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Box } from '@mui/material';
-import { RockstarLoader } from '../components/RockstarLoader';
-import NavBar from '../components/NavBar';
-import ServicePageItem from '../components/ServicePageItem';
+import { RockstarLoader } from '../components/other/RockstarLoader';
+import NavBar from '../components/other/NavBar';
+import ServicePageCard from '../components/cards/ServicePageCard';
 import { useAppContext } from '../contexts/AppContext';
 
 const ServicePage = () => {
@@ -36,11 +36,11 @@ const ServicePage = () => {
     }, [servicePageId]);
 
     if (isLoading) return <RockstarLoader />;
-    return (
+    else return (
         <>
             <NavBar />
             <Box>
-                <ServicePageItem
+                <ServicePageCard
                     service={serviceById}
                     status={statusById}
                 />

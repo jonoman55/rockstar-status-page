@@ -1,6 +1,6 @@
 import { Box, Divider, Paper, Stack, Typography } from '@mui/material';
-import { FlexText } from './controls/FlexText';
-import { styleStatus } from '../helpers';
+import { FlexText } from '../styles/FlexControls';
+import { styleStatus } from '../../helpers';
 
 const ServiceItem = ({ service }) => (
     <Box component={Paper} sx={{

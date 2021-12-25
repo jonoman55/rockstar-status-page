@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container } from './styles/Global';
+import { Container } from './Container';
 import Header from './Header';
 import BackToTop from './BackToTop';
 import Footer from './Footer';

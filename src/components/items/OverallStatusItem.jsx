@@ -1,5 +1,5 @@
-import { Typography, Box, Divider, Paper, Stack } from "@mui/material"
-import { styleStatus } from '../helpers';
+import { Typography, Box, Divider, Paper, Stack } from '@mui/material';
+import { styleStatus } from '../../helpers';
 
 const OverAllStatusItem = ({ service }) => (
     <Paper sx={{

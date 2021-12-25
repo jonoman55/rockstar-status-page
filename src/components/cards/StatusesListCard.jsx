@@ -1,13 +1,16 @@
 import { NavLink, useNavigate } from 'react-router-dom';
-import { Avatar, Box, Card, CardHeader, CardMedia, CardContent, CardActions, IconButton, Paper, Grid } from '@mui/material';
-import { Wifi as WifiIcon, Refresh as RefreshIcon } from '@mui/icons-material';
-import { RockstarLoader } from './RockstarLoader';
-import StatusItem from './StatusItem';
-import { useAppContext } from '../contexts/AppContext';
-import { styleStatus, fetchImage, fetchStatusIcon, checkStatuses } from '../helpers';
-import { usePathname } from '../hooks/usePathname';
+import { Avatar, Card, CardHeader, CardMedia, CardContent, CardActions, IconButton, Paper, Grid } from '@mui/material';
+import { Refresh as RefreshIcon } from '@mui/icons-material';
+import { RockstarLoader } from '../other/RockstarLoader';
+import { StatusIcon } from '../other/StatusIcon';
+import { CardActionBox } from '../other/CardActionBox';
+import StatusItem from '../items/StatusItem';
+import { useAppContext } from '../../contexts/AppContext';
+import { fetchImage, checkStatuses } from '../../helpers';
+import { usePathname } from '../../hooks/usePathname';
 
-const StatusesList = () => {
+// TODO : Padd the Card Content
+const StatusesListCard = () => {
     const navigate = useNavigate();
     const pathname = usePathname();
 
@@ -17,11 +20,9 @@ const StatusesList = () => {
         tabValue,
     } = useAppContext();
 
-    const _statuses = checkStatuses(statuses);
-
     if (isLoading) return <RockstarLoader />;
-    return (
-        <Box component={Paper} sx={{
+    else return (
+        <Paper sx={{
             width: '100%', bgcolor: 'primary.main', color: 'primary.contrastText',
             p: 2, pb: 3.5, height: '100%'
         }}>
@@ -34,27 +35,27 @@ const StatusesList = () => {
                 <CardHeader
                     sx={{ textAlign: 'right', color: 'primary.contrastText' }}
                     avatar={
-                        <Avatar sx={{ bgcolor: 'custom.disabled' }} aria-label="logo">
-                            <WifiIcon sx={{ color: styleStatus(_statuses) }} />
+                        <Avatar aria-label='status-icon' sx={{ bgcolor: 'inherit' }}>
+                            <StatusIcon status={`${checkStatuses(statuses)}`} />
                         </Avatar>
                     }
                     action={tabValue === 2 && (
-                        <IconButton aria-label="refresh" onClick={() => navigate(tabValue === 2 ? pathname : '*')} sx={{
+                        <IconButton aria-label='refresh' onClick={() => navigate(tabValue === 2 ? pathname : '*')} sx={{
                             color: 'primary.contrastText'
                         }}>
                             <RefreshIcon fontSize='large' />
                         </IconButton>
                     )}
-                    title="Rockstar Statuses"
+                    title='Rockstar Statuses'
                     subheader={`${new Date().toLocaleString()}`}
                 />
                 {tabValue === 2 && (
                     <CardMedia
                         sx={{ objectFit: 'contain' }}
-                        component="img"
-                        height="198px"
+                        component='img'
+                        height='198px'
                         image={fetchImage(0)}
-                        alt="logo"
+                        alt='logo'
                     />
                 )}
                 <CardContent sx={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap', pt: 4, px: 2, mt: 2 }}>
@@ -68,12 +69,12 @@ const StatusesList = () => {
                         ))}
                     </Grid>
                 </CardContent>
-                <CardActions disableSpacing sx={{ flexDirection: 'column', alignItems: 'flex-end' }}>
-                    {fetchStatusIcon(_statuses)}
+                <CardActions sx={{ display: 'flex' }}>
+                    <CardActionBox />
                 </CardActions>
             </Card>
-        </Box>
+        </Paper>
     );
 };
 
-export default StatusesList;
+export default StatusesListCard;

@@ -1,6 +1,6 @@
 import { Box, Divider, Paper, Stack, Typography } from '@mui/material';
-import Platforms from './Platforms';
-import { styleStatus } from '../helpers';
+import PlatformsItem from './PlatformsItem';
+import { styleStatus } from '../../helpers';
 
 const StatusItem = ({ status }) => (
     <Paper sx={{
@@ -11,7 +11,7 @@ const StatusItem = ({ status }) => (
             {status?.name}
         </Typography>
         <Divider sx={{ py: 1 }} />
-        <Stack direction="row" sx={{ pt: 1 }}>
+        <Stack direction='row' sx={{ pt: 1 }}>
             <Typography component='p' sx={{ pt: 1, pr: 1 }}>Status:</Typography>
             <Typography sx={{ color: `${styleStatus(status?.status?.toLowerCase())}`, pt: 1, fontWeight: 'bold', textTransform: 'uppercase' }}>
                 {status?.status}
@@ -21,11 +21,11 @@ const StatusItem = ({ status }) => (
         <Box component='span' sx={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', pt: 2 }}>
             <Typography sx={{ pr: 1 }}>Updated:</Typography>
             <Typography sx={{ pr: 1 }}>{new Date(status?.updated).toLocaleDateString()}</Typography>
-            <Typography sx={{ pr: 1 }}>{" - "}</Typography>
+            <Typography sx={{ pr: 1 }}>{' - '}</Typography>
             <Typography>{new Date(status?.updated).toLocaleTimeString()}</Typography>
         </Box>
         {status?.services_platforms && (
-            <Platforms platforms={status?.services_platforms} />
+            <PlatformsItem platforms={status?.services_platforms} />
         )}
     </Paper>
 );

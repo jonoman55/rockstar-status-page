@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { AppBar, Paper, Tabs } from '@mui/material';
-import { Tab, a11yProps } from './styles/TabGroup.styled';
-import { useAppContext } from '../contexts/AppContext';
+import { Tab, a11yProps } from '../styles/TabGroup.styled';
+import { useAppContext } from '../../contexts/AppContext';
 import { useEffect } from 'react';
 
 const TabGroup = () => {

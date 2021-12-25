@@ -5,7 +5,7 @@ import AllStatusesPage from '../pages/AllStatusesPage';
 import ServicesPage from '../pages/ServicesPage';
 import StatusesPage from '../pages/StatusesPage';
 import ApiStatusPage from '../pages/ApiStatusPage';
-import Layout from '../components/Layout';
+import Layout from '../components/layout/Layout';
 
 export default function Routes() {
     return (

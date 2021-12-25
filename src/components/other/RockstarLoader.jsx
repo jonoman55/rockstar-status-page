@@ -1,5 +1,5 @@
 import { Box } from '@mui/material';
-import loading from '../images/loading.gif';
+import loading from '../../images/loading.gif';
 
 export const RockstarLoader = () => (
     <Box sx={{

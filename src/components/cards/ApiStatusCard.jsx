@@ -1,13 +1,16 @@
 import { useNavigate } from 'react-router-dom';
 import { Avatar, Box, Typography, Card, CardHeader, CardMedia, CardContent, CardActions, IconButton, Paper, Link, Stack, Divider } from '@mui/material';
-import { Wifi as WifiIcon, Refresh as RefreshIcon } from '@mui/icons-material';
-import { RockstarLoader } from './RockstarLoader';
-import { Container, ApiTitle } from './styles/ApiStatus.styled';
-import { styleStatus, fetchImage, fetchStatusIcon } from '../helpers';
-import { useAppContext } from '../contexts/AppContext';
-import { usePathname } from '../hooks/usePathname';
+import { Refresh as RefreshIcon } from '@mui/icons-material';
+import { RockstarLoader } from '../other/RockstarLoader';
+import { StatusIcon } from '../other/StatusIcon';
+import { CardActionBox } from '../other/CardActionBox';
+import { Container, ApiTitle } from '../styles/ApiStatus.styled';
+import { styleStatus, fetchImage } from '../../helpers';
+import { useAppContext } from '../../contexts/AppContext';
+import { usePathname } from '../../hooks/usePathname';
 
-const ApiStatus = () => {
+// TODO : Padd the Card Content
+const ApiStatusCard = () => {
     const navigate = useNavigate();
     const pathname = usePathname();
 
@@ -20,7 +23,7 @@ const ApiStatus = () => {
     const color = styleStatus(apiStatus?.status?.toLowerCase());
 
     if (isLoading) return <RockstarLoader />;
-    return (
+    else return (
         <Container>
             <Card sx={{
                 alignContent: 'flex-start', justifyContent: 'center', alignItems: 'center',
@@ -31,27 +34,27 @@ const ApiStatus = () => {
                 <CardHeader
                     sx={{ textAlign: 'right', color: 'primary.contrastText' }}
                     avatar={
-                        <Avatar sx={{ bgcolor: 'custom.disabled' }} aria-label="logo">
-                            <WifiIcon sx={{ color: color }} />
+                        <Avatar aria-label='status-icon' sx={{ bgcolor: 'inherit' }}>
+                            <StatusIcon status={`${apiStatus?.status?.toLowerCase()}`} />
                         </Avatar>
                     }
                     action={tabValue === 3 && (
-                        <IconButton aria-label="refresh" onClick={() => navigate(tabValue === 3 ? pathname : '*')} sx={{
+                        <IconButton aria-label='refresh' onClick={() => navigate(tabValue === 3 ? pathname : '*')} sx={{
                             color: 'primary.contrastText'
                         }}>
                             <RefreshIcon fontSize='large' />
                         </IconButton>
                     )}
-                    title="Rockstar Services Status API"
+                    title='Rockstar Services Status API'
                     subheader={`${new Date().toLocaleString()}`}
                 />
                 {tabValue === 3 && (
                     <CardMedia
                         sx={{ objectFit: 'contain' }}
-                        component="img"
-                        height="198px"
+                        component='img'
+                        height='198px'
                         image={fetchImage(0)}
-                        alt="logo"
+                        alt='logo'
                     />
                 )}
                 <CardContent sx={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap', pt: 4, px: 2, mt: 2 }}>
@@ -68,19 +71,17 @@ const ApiStatus = () => {
                             </Typography>
                         </Stack>
                         <Divider sx={{ pt: 1 }} />
-                        <Box component='span' sx={{ 
-                            display: 'flex', flexDirection: 'row', alignItems: 'flex-start', py: 1 
-                        }}>
+                        <Box component='span' sx={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', py: 1 }}>
                             {`Updated: ${apiStatus?.updated}`}
                         </Box>
                     </Paper>
                 </CardContent>
-                <CardActions disableSpacing sx={{ flexDirection: 'column', alignItems: 'flex-end' }}>
-                    {fetchStatusIcon(apiStatus?.status?.toLowerCase())}
+                <CardActions sx={{ display: 'flex' }}>
+                    <CardActionBox />
                 </CardActions>
             </Card>
         </Container>
     );
 };
 
-export default ApiStatus;
+export default ApiStatusCard;

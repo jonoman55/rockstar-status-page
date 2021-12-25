@@ -1,8 +1,9 @@
 import React from 'react';
 import { Box, Typography, Divider, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
-import { styleStatus, fetchPlatformIcon } from '../helpers';
+import { styleStatus, fetchPlatformIcon } from '../../helpers';
 
-const Platforms = ({ platforms }) => (
+// TODO : Make the PS4 icon larger
+const PlatformsItem = ({ platforms }) => (
     <Box sx={{ py: 1 }}>
         <Divider sx={{ pt: 1 }} />
         <Typography sx={{ py: 2, fontSize: 18 }} variant='h6'>Platforms</Typography>
@@ -28,4 +29,4 @@ const Platforms = ({ platforms }) => (
     </Box>
 );
 
-export default Platforms;
+export default PlatformsItem;

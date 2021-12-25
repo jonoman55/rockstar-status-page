@@ -1,7 +1,7 @@
 import { Navigate } from 'react-router-dom';
 import { Box } from '@mui/material';
-import { RockstarLoader } from '../components/RockstarLoader';
-import TabGroup from '../components/TabGroup';
+import { RockstarLoader } from '../components/other/RockstarLoader';
+import TabGroup from '../components/other/TabGroup';
 import { useAppContext } from '../contexts/AppContext';
 
 const HomePage = () => {

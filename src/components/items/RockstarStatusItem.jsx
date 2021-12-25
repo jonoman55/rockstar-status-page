@@ -1,8 +1,8 @@
 import { Box, Typography, Paper, Link, Stack, Divider } from '@mui/material';
-import { styleStatus, checkStatuses } from '../helpers';
+import { styleStatus, checkStatuses } from '../../helpers';
 
 const RockstarStatusItem = ({ services, statuses, updated }) => (
-    <Paper component={Link} href="https://support.rockstargames.com/servicestatus" target='_blank' sx={{
+    <Paper component={Link} href='https://support.rockstargames.com/servicestatus' target='_blank' sx={{
         p: 2, mr: 0.5, color: 'primary.contrastText', bgcolor: 'primary.main', textDecoration: 'none', minHeight: '202px',
         '&:hover': { color: 'primary.contrastText', bgcolor: 'custom.disabled', opacity: 1 }, width: '100%', minWidth: '290.5px'
     }}>

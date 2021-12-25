@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { AppBar, Box } from '@mui/material';
 import { Home as HomeIcon } from '@mui/icons-material';
-import { ToggleButtonGroup, ToggleButton, HomeButton } from './styles/Navbar.styled';
-import { useAppContext } from '../contexts/AppContext';
+import { ToggleButtonGroup, ToggleButton, HomeButton } from '../styles/Navbar.styled';
+import { useAppContext } from '../../contexts/AppContext';
 
 const NavBar = () => {
     const { services, setServicePageId } = useAppContext();

@@ -1,16 +1,19 @@
 import { useNavigate, NavLink } from 'react-router-dom';
 import { Avatar, Box, Card, CardHeader, CardMedia, CardContent, CardActions, IconButton, Paper, Grid } from '@mui/material';
-import { Wifi as WifiIcon, Refresh as RefreshIcon } from '@mui/icons-material';
-import { RockstarLoader } from './RockstarLoader';
-import RockstarStatusItem from './RockstarStatusItem';
-import OverAllStatusItem from './OverallStatusItem';
-import StatusIndicators from './StatusIndicatorsItem';
-import { styleStatus, fetchImage, fetchStatusIcon, checkStatuses } from '../helpers';
-import { useAppContext } from '../contexts/AppContext';
-import { usePathname } from '../hooks/usePathname';
+import { Refresh as RefreshIcon } from '@mui/icons-material';
+import { RockstarLoader } from '../other/RockstarLoader';
+import { StatusIcon } from '../other/StatusIcon';
+import { CardActionBox } from '../other/CardActionBox';
+import RockstarStatusItem from '../items/RockstarStatusItem';
+import OverAllStatusItem from '../items/OverallStatusItem';
+import StatusIndicators from '../items/StatusIndicatorsItem';
+import { fetchImage, checkStatuses } from '../../helpers';
+import { useAppContext } from '../../contexts/AppContext';
+import { usePathname } from '../../hooks/usePathname';
 
 // TODO : Redo the RockstarStatusItem and OverAllStatusItem to match -> https://support.rockstargames.com/servicestatus
-const OverallStatus = () => {
+// TODO : Padd the Card Content
+const OverallStatusCard = () => {
     const navigate = useNavigate();
     const pathname = usePathname();
 
@@ -22,10 +25,8 @@ const OverallStatus = () => {
         updated
     } = useAppContext();
 
-    const color = styleStatus(checkStatuses(services));
-
     if (isLoading) return <RockstarLoader />;
-    return (
+    else return (
         <Paper sx={{ p: 2, bgcolor: 'primary.main', color: 'primary.contrastText' }}>
             <Card sx={{
                 alignContent: 'flex-start', justifyContent: 'center', alignItems: 'center',
@@ -36,26 +37,26 @@ const OverallStatus = () => {
                 <CardHeader
                     sx={{ textAlign: 'right' }}
                     avatar={
-                        <Avatar sx={{ bgcolor: 'custom.disabled' }} aria-label="logo">
-                            <WifiIcon sx={{ color: color }} />
+                        <Avatar aria-label='status-icon' sx={{ bgcolor: 'inherit' }}>
+                            <StatusIcon status={`${checkStatuses(services)}`} />
                         </Avatar>
                     }
                     action={tabValue === 0 && (
-                        <IconButton aria-label="refresh" onClick={() => navigate(pathname)} sx={{
+                        <IconButton aria-label='refresh' onClick={() => navigate(pathname)} sx={{
                             color: 'primary.contrastText'
                         }}>
                             <RefreshIcon fontSize='large' />
                         </IconButton>
                     )}
-                    title="Overall Status"
+                    title='Overall Status'
                     subheader={`${new Date().toLocaleString()}`}
                 />
                 <CardMedia
                     sx={{ objectFit: 'contain' }}
-                    component="img"
-                    height="198px"
+                    component='img'
+                    height='198px'
                     image={fetchImage(0)}
-                    alt="logo"
+                    alt='logo'
                 />
                 <CardContent sx={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap', pt: 4, px: 2, mt: 2 }}>
                     <Box sx={{ display: 'flex', width: '100%', justifyContent: 'center' }}>
@@ -78,12 +79,12 @@ const OverallStatus = () => {
                         <StatusIndicators />   
                     </Box>  
                 </CardContent>
-                <CardActions disableSpacing sx={{ flexDirection: 'column', alignItems: 'flex-end' }}>
-                    {fetchStatusIcon(checkStatuses(services))}
+                <CardActions sx={{ display: 'flex' }}>
+                    <CardActionBox />
                 </CardActions>
             </Card>
         </Paper>
     );
 };
 
-export default OverallStatus;
+export default OverallStatusCard;

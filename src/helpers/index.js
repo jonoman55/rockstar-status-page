@@ -90,7 +90,7 @@ export const fetchStatusIcon = (status) => {
     };
 };
 
-// TODO : check for all up = UP / check for limited/down count 2 or more vs each type = limited or down
+// TODO : use lodash to return the hightest indicator count
 export const checkStatuses = (statuses) => {
     if (Object.values(statuses).every((s) => s?.status.toLowerCase() === 'up'))
         return 'up';

@@ -1,6 +1,6 @@
 import { AppBar, Container, Tooltip, Link, Stack, Divider } from '@mui/material';
 import { Copyright } from '@mui/icons-material';
-import { FlexButton } from './controls/FlexButton';
+import { FlexButton } from '../styles/FlexControls';
 
 const Footer = () => (
     <AppBar position='static' elevation={2} component='footer' sx={{
@@ -18,7 +18,7 @@ const Footer = () => (
                         John Chiappetta {new Date().getFullYear()}
                     </FlexButton>
                 </Tooltip>
-                <Divider orientation="vertical" flexItem sx={{ py: 1 }} />
+                <Divider orientation='vertical' flexItem sx={{ py: 1 }} />
                 <Tooltip title='Rockstar Games' placement='top'>
                     <FlexButton component={Link} href='https://www.rockstargames.com/' target='_blank'
                         startIcon={<Copyright sx={{ ml: 1, mb: 0.5 }} />}
