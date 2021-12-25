@@ -4,7 +4,7 @@ import { Refresh as RefreshIcon } from '@mui/icons-material';
 import { RockstarLoader } from '../other/RockstarLoader';
 import { StatusIcon } from '../other/StatusIcon';
 import { CardActionBox } from '../other/CardActionBox';
-import { Container, ApiTitle } from '../styles/ApiStatus.styled';
+import { Container, Title } from '../styles/ApiStatus.styled';
 import { styleStatus, fetchImage } from '../../helpers';
 import { useAppContext } from '../../contexts/AppContext';
 import { usePathname } from '../../hooks/usePathname';
@@ -62,7 +62,7 @@ const ApiStatusCard = () => {
                         color: 'primary.contrastText', bgcolor: 'primary.main', textDecoration: 'none', minHeight: '125px', 
                         '&:hover': { color: 'primary.contrastText', bgcolor: 'custom.disabled', opacity: 1 }, p: 1
                     }}>
-                        <ApiTitle variant='h6'>{apiStatus?.message}</ApiTitle>
+                        <Title variant='h6'>{apiStatus?.message}</Title>
                         <Divider sx={{ pb: 1 }} />
                         <Stack direction='row' sx={{ pt: 1 }}>
                             <Typography sx={{ pr: 1 }}>Status:</Typography>

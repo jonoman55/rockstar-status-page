@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes as Switch, Route, Navigate } from 'react-router-dom';
-import HomePage from '../pages/HomePage';
+import NotFoundPage from '../pages/NotFoundPage';
 import ServicePage from '../pages/ServicePage';
 import AllStatusesPage from '../pages/AllStatusesPage';
 import ServicesPage from '../pages/ServicesPage';
@@ -12,13 +12,13 @@ export default function Routes() {
         <Router>
             <Layout>
                 <Switch>
-                    <Route path='/' element={<HomePage />} />
-                    <Route path='*' element={<Navigate to='/all' />} />
+                    <Route path='/' element={<Navigate to='/all' />} />
                     <Route path='/all' element={<AllStatusesPage />} />
                     <Route path='/services' element={<ServicesPage />} />
                     <Route path='/statuses' element={<StatusesPage />} />
                     <Route path='/api' element={<ApiStatusPage />} />
                     <Route path='/service/:id' element={<ServicePage />} />
+                    <Route path="*" element={<NotFoundPage />} />
                 </Switch>
             </Layout>
         </Router>

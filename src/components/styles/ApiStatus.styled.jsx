@@ -14,7 +14,7 @@ export const Container = styled(Box)(({ theme }) => ({
     },
 }));
 
-export const ApiTitle = styled(Typography)(({ theme }) => ({
+export const Title = styled(Typography)(({ theme }) => ({
     padding: theme.spacing(0.5, 0),
     color: theme.palette.custom.main, 
     [theme.breakpoints.up('xs')]: {

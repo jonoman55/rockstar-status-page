@@ -36,7 +36,7 @@ function ScrollTop(props) {
     }; 
     return (
         <Zoom in={trigger}>
-            <Box role='presentation' sx={zoomBoxStyles} onClick={handleClick}>
+            <Box role='presentation' onClick={handleClick} sx={zoomBoxStyles}>
                 {children}
             </Box>
         </Zoom>

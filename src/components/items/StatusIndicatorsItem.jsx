@@ -1,6 +1,6 @@
 import { Paper, Typography, Divider, Grid } from '@mui/material';
-import indicators from '../../constants/indicators';
 import { IndicatorItem } from './IndicatorItem';
+import indicators from '../../constants/indicators';
 
 const RockstarStatusItem = () => (
     <Paper sx={{

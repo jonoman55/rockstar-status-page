@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, Typography, Divider, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
-import { styleStatus, fetchPlatformIcon } from '../../helpers';
+import { PlatformIcon } from '../other/PlatformIcon';
+import { styleStatus } from '../../helpers';
 
 // TODO : Make the PS4 icon larger
 const PlatformsItem = ({ platforms }) => (
@@ -14,7 +15,9 @@ const PlatformsItem = ({ platforms }) => (
                     {platforms?.map((p, idx) => (
                         <React.Fragment key={idx}>
                             <ListItem sx={{ pt: 2 }} disableGutters>
-                                <ListItemIcon>{fetchPlatformIcon(p.name)}</ListItemIcon>
+                                <ListItemIcon>
+                                    <PlatformIcon platform={p?.name} />
+                                </ListItemIcon>
                                 <ListItemText>{p.name}</ListItemText>
                                 <Typography sx={{ pr: 1, color: `${styleStatus(p.status?.toLowerCase())}`, fontWeight: 'bold' }}>
                                     {p.status}

@@ -1,20 +1,20 @@
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { Box, Avatar, Card, CardHeader, CardMedia, CardContent, CardActions, Paper, Typography, IconButton } from '@mui/material';
 import { Refresh as RefreshIcon } from '@mui/icons-material';
 import { StatusIcon } from '../other/StatusIcon';
 import { CardActionBox } from '../other/CardActionBox';
 import PlatformsItem from '../items/PlatformsItem';
 import { styleStatus, fetchImage } from '../../helpers';
-import { usePathname } from '../../hooks/usePathname';
+// import { usePathname } from '../../hooks/usePathname';
 
-// TODO : Padd the Card Content
-const ServicePageCard = ({ service, status }) => {
-    const navigate = useNavigate();
-    const pathname = usePathname();
+// TODO : Pad the Card Content
+const ServicePageCard = ({ service, status, onRefresh }) => {
+    // const navigate = useNavigate();
+    // const pathname = usePathname();
     return (
         <Paper sx={{
-            width: '100%', bgcolor: 'primary.main', color: 'primary.contrastText',
-            p: 2, pb: 2, height: '100%', borderRadius: 0, boxShadow: 'none'
+            width: '100%', height: '100%', bgcolor: 'primary.main', color: 'primary.contrastText',
+            p: 2, pb: 2, borderRadius: 0, boxShadow: 'none'
         }}>
             <Card sx={{
                 p: 1, alignContent: 'flex-start', justifyContent: 'center', alignItems: 'center',
@@ -30,24 +30,26 @@ const ServicePageCard = ({ service, status }) => {
                         </Avatar>
                     }
                     action={
-                        <IconButton aria-label='refresh' onClick={() => navigate(pathname)} sx={{
-                            color: 'primary.contrastText'
-                        }}>
+                        <IconButton aria-label='refresh' onClick={onRefresh} sx={{ color: 'primary.contrastText' }}>
                             <RefreshIcon fontSize='large' />
                         </IconButton>
                     }
                     title={`${service?.name}`}
                     subheader={`${new Date(service?.updated).toLocaleString()}`}
                 />
-                <Box sx={{ pb: 4, display: 'flex', flexDirection: 'row', flexWrap: 'nowrap', alignItems: 'center', justifyContent: 'center' }}>
-                    <CardMedia sx={{
-                        objectFit: 'scale-down', borderStyle: 'solid', borderWidth: 'thin', borderRadius: '2rem',
-                        bgcolor: 'custom.light', height: '250px', maxWidth: '345px'
-                    }}
+                <Box sx={{ 
+                    pb: 4, display: 'flex', flexDirection: 'row', flexWrap: 'nowrap', 
+                    alignItems: 'center', justifyContent: 'center' 
+                }}>
+                    <CardMedia 
                         component='img'
                         height='250px'
                         image={fetchImage(service?.id)}
                         alt='logo'
+                        sx={{
+                            objectFit: 'scale-down', bgcolor: 'custom.light', height: '250px', maxWidth: '345px',
+                            borderStyle: 'solid', borderWidth: 'thin', borderRadius: '2rem',
+                        }}
                     />
                 </Box>
                 {service.message && (

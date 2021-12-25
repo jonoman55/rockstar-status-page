@@ -7,18 +7,17 @@ import { CardActionBox } from '../other/CardActionBox';
 import RockstarStatusItem from '../items/RockstarStatusItem';
 import OverAllStatusItem from '../items/OverallStatusItem';
 import StatusIndicators from '../items/StatusIndicatorsItem';
-import { fetchImage, checkStatuses } from '../../helpers';
+import { fetchImage, checkStatusesCount } from '../../helpers';
 import { useAppContext } from '../../contexts/AppContext';
 import { usePathname } from '../../hooks/usePathname';
 
-// TODO : Redo the RockstarStatusItem and OverAllStatusItem to match -> https://support.rockstargames.com/servicestatus
-// TODO : Padd the Card Content
+// TODO : Redo this Card to match -> https://support.rockstargames.com/servicestatus
+// TODO : Pad the Card Content
 const OverallStatusCard = () => {
     const navigate = useNavigate();
     const pathname = usePathname();
 
     const {
-        tabValue,
         isLoading,
         services,
         statuses,
@@ -38,16 +37,14 @@ const OverallStatusCard = () => {
                     sx={{ textAlign: 'right' }}
                     avatar={
                         <Avatar aria-label='status-icon' sx={{ bgcolor: 'inherit' }}>
-                            <StatusIcon status={`${checkStatuses(services)}`} />
+                            <StatusIcon status={`${checkStatusesCount(services)}`} />
                         </Avatar>
                     }
-                    action={tabValue === 0 && (
-                        <IconButton aria-label='refresh' onClick={() => navigate(pathname)} sx={{
-                            color: 'primary.contrastText'
-                        }}>
+                    action={
+                        <IconButton aria-label='refresh' onClick={() => navigate(pathname)} sx={{ color: 'primary.contrastText' }}>
                             <RefreshIcon fontSize='large' />
                         </IconButton>
-                    )}
+                    }
                     title='Overall Status'
                     subheader={`${new Date().toLocaleString()}`}
                 />

@@ -20,14 +20,14 @@ const ServicePage = () => {
     } = useAppContext();
 
     const fetchData = async () => {
-        setIsLoading(true);
         try {
+            setIsLoading(true);
             await getServiceById(id);
             await getStatusById(id);
+            setIsLoading(false);
         } catch (error) {
             console.log(error);
         }
-        setIsLoading(false);
     };
 
     useEffect(() => {
@@ -43,6 +43,7 @@ const ServicePage = () => {
                 <ServicePageCard
                     service={serviceById}
                     status={statusById}
+                    onRefresh={fetchData}
                 />
             </Box>
         </>

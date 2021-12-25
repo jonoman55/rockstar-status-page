@@ -4,6 +4,7 @@ import { RockstarLoader } from '../components/other/RockstarLoader';
 import TabGroup from '../components/other/TabGroup';
 import { useAppContext } from '../contexts/AppContext';
 
+// TODO : Remove this Page as it is no longer used
 const HomePage = () => {
     const {
         apiStatus,

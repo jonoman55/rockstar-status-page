@@ -5,8 +5,8 @@ import { RockstarLoader } from '../other/RockstarLoader';
 import { StatusIcon } from '../other/StatusIcon';
 import { CardActionBox } from '../other/CardActionBox';
 import StatusItem from '../items/StatusItem';
-import { useAppContext } from '../../contexts/AppContext';
 import { fetchImage, checkStatuses } from '../../helpers';
+import { useAppContext } from '../../contexts/AppContext';
 import { usePathname } from '../../hooks/usePathname';
 
 // TODO : Padd the Card Content
@@ -23,8 +23,7 @@ const StatusesListCard = () => {
     if (isLoading) return <RockstarLoader />;
     else return (
         <Paper sx={{
-            width: '100%', bgcolor: 'primary.main', color: 'primary.contrastText',
-            p: 2, pb: 3.5, height: '100%'
+            p: 2, pb: 3.5, width: '100%', height: '100%', bgcolor: 'primary.main', color: 'primary.contrastText'
         }}>
             <Card sx={{
                 alignContent: 'flex-start', justifyContent: 'center', alignItems: 'center',

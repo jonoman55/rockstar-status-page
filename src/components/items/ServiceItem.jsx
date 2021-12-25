@@ -3,7 +3,7 @@ import { FlexText } from '../styles/FlexControls';
 import { styleStatus } from '../../helpers';
 
 const ServiceItem = ({ service }) => (
-    <Box component={Paper} sx={{
+    <Paper sx={{
         p: 1, color: 'primary.contrastText', bgcolor: 'primary.main', minHeight: '325px',
         '&:hover': { color: 'primary.contrastText', bgcolor: 'custom.disabled', opacity: 1 }
     }}>
@@ -33,7 +33,7 @@ const ServiceItem = ({ service }) => (
             <FlexText sx={{ pr: 1 }}>{' - '}</FlexText>
             <FlexText>{new Date(service?.updated).toLocaleTimeString()}</FlexText>
         </Box>
-    </Box>
+    </Paper>
 );
 
 export default ServiceItem;

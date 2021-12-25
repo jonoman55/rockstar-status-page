@@ -1,4 +1,4 @@
-import { styled, ToggleButtonGroup as MuiToggleButtonGroup , ToggleButton as MuiToggleButton } from '@mui/material';
+import { styled, ToggleButtonGroup as MuiToggleButtonGroup, ToggleButton as MuiToggleButton } from '@mui/material';
 
 export const HomeButton = styled(MuiToggleButton)(({ theme }) => ({
     color: theme.palette.primary.contrastText,
@@ -16,14 +16,18 @@ export const ToggleButton = styled(MuiToggleButton, {
     textAlign: 'center',
     color: theme.palette.primary.contrastText,
     ...(!selected && {
-        '&:hover': { color: theme.palette.custom.main },
+        '&:hover': { 
+            color: theme.palette.custom.main 
+        },
         '&.Mui-selected': {
             color: theme.palette.custom.main,
         },
     }),
     ...(selected && {
         color: theme.palette.custom.main,
-        '&:hover': { color: theme.palette.custom.divider },
+        '&:hover': { 
+            color: theme.palette.custom.divider 
+        },
         '&.Mui-selected': {
             color: theme.palette.custom.main,
         },
@@ -32,7 +36,7 @@ export const ToggleButton = styled(MuiToggleButton, {
 
 export const ToggleButtonGroup = styled(MuiToggleButtonGroup)(({ theme }) => ({
     display: 'inline-flex',
-    borderRadius: '4px',
+    borderRadius: theme.spacing(0.5),
     [theme.breakpoints.down('sm')]: {
         fontSize: 12,
         flexDirection: 'row',
