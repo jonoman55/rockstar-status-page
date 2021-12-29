@@ -1,5 +1,5 @@
 import { Box, Divider, Paper, Stack, Typography } from '@mui/material';
-import PlatformsItem from './PlatformsItem';
+import { PlatformsItem } from './PlatformsItem';
 import { styleStatus } from '../../helpers';
 
 const StatusItem = ({ status }) => (

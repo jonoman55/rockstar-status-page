@@ -6,7 +6,7 @@ import { StatusIcon } from '../other/StatusIcon';
 import { CardActionBox } from '../other/CardActionBox';
 import RockstarStatusItem from '../items/RockstarStatusItem';
 import OverAllStatusItem from '../items/OverallStatusItem';
-import StatusIndicators from '../items/StatusIndicatorsItem';
+import StatusIndicatorsItem from '../items/StatusIndicatorsItem';
 import { fetchImage, checkStatusesCount } from '../../helpers';
 import { useAppContext } from '../../contexts/AppContext';
 import { usePathname } from '../../hooks/usePathname';
@@ -73,7 +73,7 @@ const OverallStatusCard = () => {
                         ))}
                     </Grid>
                     <Box sx={{ display: 'flex', width: '100%', justifyContent: 'center' }}>
-                        <StatusIndicators />   
+                        <StatusIndicatorsItem />   
                     </Box>  
                 </CardContent>
                 <CardActions sx={{ display: 'flex' }}>

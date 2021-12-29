@@ -23,7 +23,7 @@ export const Card = styled(MuiCard)(({ theme }) => ({
     alignContent: 'flex-start', 
     justifyContent: 'center', 
     alignItems: 'center',
-    bgcolor: theme.palette.primary.light, 
+    backgroundColor: theme.palette.primary.light, 
     color: theme.palette.primary.contrastText,
     '& .MuiCardHeader-title': { 
         color: theme.palette.primary.contrastText, 
@@ -38,14 +38,15 @@ export const Card = styled(MuiCard)(({ theme }) => ({
 export const CardContent = styled(MuiCardContent)(({ theme }) => ({
     display: 'flex', 
     flexDirection: 'column', 
-    flexWrap: 'wrap', 
-    padding: theme.spacing(4, 2, 0, 2), 
-    marginTop: theme.spacing(2),
+    flexWrap: 'nowrap', 
+    // padding: theme.spacing(4, 2, 0, 2),
+    padding: theme.spacing(0),
+    marginTop: theme.spacing(4),
 }));
 
-export const CardActions = styled(MuiCardActions)(({ theme }) => ({
-    display: 'flex',
-}));
+export const CardActions = styled(MuiCardActions)`
+    display: flex;
+`;
 
 export const CardHeader = ({ title, subheader, status, onClick }) => (
     <MuiCardHeader 
