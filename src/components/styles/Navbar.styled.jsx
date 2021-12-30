@@ -1,7 +1,13 @@
-import { styled, ToggleButtonGroup as MuiToggleButtonGroup, ToggleButton as MuiToggleButton } from '@mui/material';
+import { styled, AppBar as MuiAppBar, ToggleButtonGroup as MuiToggleButtonGroup, ToggleButton as MuiToggleButton, Box } from '@mui/material';
+
+export const AppBar = styled(MuiAppBar)`
+    backgroundColor: transparent;
+`;
 
 export const HomeButton = styled(MuiToggleButton)(({ theme }) => ({
     color: theme.palette.primary.contrastText,
+    padding: theme.spacing(1),
+    borderLeftStyle: 'none',
     '&.Mui-selected': {
         color: theme.palette.custom.main,
     },
@@ -14,10 +20,11 @@ export const ToggleButton = styled(MuiToggleButton, {
     shouldForwardProp: (prop) => prop !== 'selected'
 })(({ theme, selected }) => ({
     textAlign: 'center',
+    padding: theme.spacing(1),
     color: theme.palette.primary.contrastText,
     ...(!selected && {
         '&:hover': { 
-            color: theme.palette.custom.main 
+            color: theme.palette.custom.main,
         },
         '&.Mui-selected': {
             color: theme.palette.custom.main,
@@ -26,7 +33,7 @@ export const ToggleButton = styled(MuiToggleButton, {
     ...(selected && {
         color: theme.palette.custom.main,
         '&:hover': { 
-            color: theme.palette.custom.divider 
+            color: theme.palette.custom.selected,
         },
         '&.Mui-selected': {
             color: theme.palette.custom.main,
@@ -36,7 +43,10 @@ export const ToggleButton = styled(MuiToggleButton, {
 
 export const ToggleButtonGroup = styled(MuiToggleButtonGroup)(({ theme }) => ({
     display: 'inline-flex',
-    borderRadius: theme.spacing(0.5),
+    '& .MuiToggleButtonGroup-grouped': {
+        borderRadius: 0,
+        borderBottomStyle: 'none',
+    },
     [theme.breakpoints.down('sm')]: {
         fontSize: 12,
         flexDirection: 'row',
@@ -53,4 +63,11 @@ export const ToggleButtonGroup = styled(MuiToggleButtonGroup)(({ theme }) => ({
     [theme.breakpoints.up('lg')]: {
         fontSize: 18,
     },
+}));
+
+export const ButtonContainer = styled(Box)(({ theme }) => ({
+    width: 'auto',
+    contain: 'content',
+    backgroundColor: theme.palette.primary.dark,
+    borderRadius: 0,
 }));

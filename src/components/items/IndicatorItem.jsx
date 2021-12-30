@@ -1,7 +1,6 @@
 import { Paper, Typography } from '@mui/material';
 import { StatusIcon } from '../other/StatusIcon';
 
-// TODO : Move IndicatorItem and StatusIcon to their own .jsx files
 export const IndicatorItem = ({ status }) => (
     <Paper sx={{
         display: 'flex', flexDirection: 'column', flexWrap: 'nowrap',

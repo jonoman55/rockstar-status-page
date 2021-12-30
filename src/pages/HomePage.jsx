@@ -1,7 +1,6 @@
 import { Navigate } from 'react-router-dom';
-import { Box } from '@mui/material';
 import { RockstarLoader } from '../components/other/RockstarLoader';
-import TabGroup from '../components/other/TabGroup';
+import PageItem from '../components/items/PageItem';
 import { useAppContext } from '../contexts/AppContext';
 
 // TODO : Remove this Page as it is no longer used
@@ -11,16 +10,12 @@ const HomePage = () => {
         isLoading,
     } = useAppContext();
 
-    if (isLoading) return <RockstarLoader />;
-    return (
-        <>
-            <TabGroup />
-            <Box>
-                {apiStatus?.success && !isLoading && (
-                    <Navigate to='/all' replace={true} />
-                )}
-            </Box>
-        </>
+    return isLoading ? <RockstarLoader /> : (
+        <PageItem>
+            {apiStatus?.success && !isLoading && (
+                <Navigate to='/all' replace={true} />
+            )}
+        </PageItem>
     );
 };
 

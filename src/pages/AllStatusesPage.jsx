@@ -1,7 +1,7 @@
 import { RockstarLoader } from '../components/other/RockstarLoader';
-import TabGroup from '../components/other/TabGroup';
-import OverallStatusCard from '../components/cards/OverallStatusCard';
-// import AllCard from '../components/testing/AllCard';
+import PageItem from '../components/items/PageItem';
+// import OverallStatusCard from '../components/cards/OverallStatusCard';
+import AllCard from '../components/cards/AllCard';
 import { useAppContext } from '../contexts/AppContext';
 
 const AllStatusesPage = () => {
@@ -11,14 +11,12 @@ const AllStatusesPage = () => {
         tabValue
     } = useAppContext();
 
-    if (isLoading) return <RockstarLoader />;
-    else return (
-        <>
-            <TabGroup />
+    return isLoading ? <RockstarLoader /> : (
+        <PageItem>
             {apiStatus?.success && !isLoading && tabValue === 0 && (
-                <OverallStatusCard />
+                <AllCard />
             )}
-        </>
+        </PageItem>
     );
 };
 

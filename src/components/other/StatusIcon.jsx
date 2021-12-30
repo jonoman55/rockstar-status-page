@@ -1,17 +1,14 @@
 import { Error, OfflinePin, OfflineBolt } from '@mui/icons-material';
 
-// TODO : Use this instead of the fetchStatusIcon through out the project 
-// TODO : Add the css colors to the theme palette
-
 export const StatusIcon = ({ status }) => {
     switch (status) {
         case 'up':
-            return <OfflinePin fontSize='large' sx={{ color: '#0cf223' }} />;
+            return <OfflinePin fontSize='large' sx={{ color: 'custom.brightGreen' }} />;
         case 'limited':
-            return <OfflineBolt fontSize='large' sx={{ color: '#fff700' }} />;
+            return <OfflineBolt fontSize='large' sx={{ color: 'custom.brightYellow' }} />;
         case 'down':
-            return <Error fontSize='large' sx={{ color: '#f50202' }} />;
+            return <Error fontSize='large' sx={{ color: 'custom.brightRed' }} />;
         default:
-            return <OfflinePin fontSize='large' sx={{ color: '#0cf223' }} />;
+            return <OfflinePin fontSize='large' sx={{ color: 'custom.brightGreen' }} />;
     };
 };

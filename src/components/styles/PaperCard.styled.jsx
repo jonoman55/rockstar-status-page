@@ -1,5 +1,8 @@
 import { 
-    styled, Avatar, IconButton, 
+    styled,
+    Avatar,
+    Box,
+    IconButton,
     Paper as MuiPaper, 
     Card as MuiCard, 
     CardHeader as MuiCardHeader, 
@@ -14,7 +17,7 @@ import { fetchImage } from '../../helpers';
 export const Paper = styled(MuiPaper)(({ theme }) => ({
     height: '100%', 
     width: '100%', 
-    padding: theme.spacing(2), 
+    padding: theme.spacing(2),
     backgroundColor: theme.palette.primary.main, 
     color: theme.palette.primary.contrastText,
 }));
@@ -25,6 +28,7 @@ export const Card = styled(MuiCard)(({ theme }) => ({
     alignItems: 'center',
     backgroundColor: theme.palette.primary.light, 
     color: theme.palette.primary.contrastText,
+    marginBottom: theme.spacing(1),
     '& .MuiCardHeader-title': { 
         color: theme.palette.primary.contrastText, 
         paddingRight: theme.spacing(1) ,
@@ -39,7 +43,6 @@ export const CardContent = styled(MuiCardContent)(({ theme }) => ({
     display: 'flex', 
     flexDirection: 'column', 
     flexWrap: 'nowrap', 
-    // padding: theme.spacing(4, 2, 0, 2),
     padding: theme.spacing(0),
     marginTop: theme.spacing(4),
 }));
@@ -79,3 +82,15 @@ export const AvatarStatusIcon = ({ status }) => (
         <StatusIcon status={status} />
     </Avatar>
 );
+
+export const IndicatorsContainer = styled(Box)(({ theme }) => ({
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'nowrap',
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: theme.spacing(2),
+    marginLeft: theme.spacing(0.25),
+    marginTop: theme.spacing(-4),
+}));

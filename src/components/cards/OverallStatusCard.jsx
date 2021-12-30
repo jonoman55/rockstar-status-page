@@ -1,4 +1,4 @@
-import { useNavigate, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Avatar, Box, Card, CardHeader, CardMedia, CardContent, CardActions, IconButton, Paper, Grid } from '@mui/material';
 import { Refresh as RefreshIcon } from '@mui/icons-material';
 import { RockstarLoader } from '../other/RockstarLoader';
@@ -9,23 +9,19 @@ import OverAllStatusItem from '../items/OverallStatusItem';
 import StatusIndicatorsItem from '../items/StatusIndicatorsItem';
 import { fetchImage, checkStatusesCount } from '../../helpers';
 import { useAppContext } from '../../contexts/AppContext';
-import { usePathname } from '../../hooks/usePathname';
 
-// TODO : Redo this Card to match -> https://support.rockstargames.com/servicestatus
+// TODO : Remove this Card component -> AllCard replaces it
 // TODO : Pad the Card Content
 const OverallStatusCard = () => {
-    const navigate = useNavigate();
-    const pathname = usePathname();
-
     const {
         isLoading,
         services,
         statuses,
-        updated
+        updated,
+        refetchAllData
     } = useAppContext();
 
-    if (isLoading) return <RockstarLoader />;
-    else return (
+    return isLoading ? <RockstarLoader /> : (
         <Paper sx={{ p: 2, bgcolor: 'primary.main', color: 'primary.contrastText' }}>
             <Card sx={{
                 alignContent: 'flex-start', justifyContent: 'center', alignItems: 'center',
@@ -36,12 +32,12 @@ const OverallStatusCard = () => {
                 <CardHeader
                     sx={{ textAlign: 'right' }}
                     avatar={
-                        <Avatar aria-label='status-icon' sx={{ bgcolor: 'inherit' }}>
+                        <Avatar sx={{ bgcolor: 'inherit' }}>
                             <StatusIcon status={`${checkStatusesCount(services)}`} />
                         </Avatar>
                     }
                     action={
-                        <IconButton aria-label='refresh' onClick={() => navigate(pathname)} sx={{ color: 'primary.contrastText' }}>
+                        <IconButton onClick={refetchAllData} sx={{ color: 'primary.contrastText' }}>
                             <RefreshIcon fontSize='large' />
                         </IconButton>
                     }

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-// TODO : replace /file to /api when testing is finished
+// TODO : Remove the console.logs when testing is complete
 const baseURL = `${process.env.REACT_APP_API_URL}/api`;
 
 const axiosInstance = axios.create({ baseURL });

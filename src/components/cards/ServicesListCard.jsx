@@ -1,27 +1,23 @@
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Avatar, Card, CardHeader, CardMedia, CardContent, CardActions, IconButton, Paper, Grid } from '@mui/material';
 import { Refresh as RefreshIcon } from '@mui/icons-material';
 import { RockstarLoader } from '../other/RockstarLoader';
 import { StatusIcon } from '../other/StatusIcon';
 import { CardActionBox } from '../other/CardActionBox';
 import ServiceItem from '../items/ServiceItem';
-import { checkStatuses, fetchImage } from '../../helpers';
+import { fetchStatusByCount, fetchImage } from '../../helpers';
 import { useAppContext } from '../../contexts/AppContext';
-import { usePathname } from '../../hooks/usePathname';
 
 // TODO : Pad the Card Content
 const ServicesListCard = () => {
-    const navigate = useNavigate();
-    const pathname = usePathname();
-
     const {
         services,
         isLoading,
         tabValue,
+        refetchServices
     } = useAppContext();
 
-    if (isLoading) return <RockstarLoader />;
-    else return (
+    return isLoading ? <RockstarLoader /> : (
         <Paper sx={{
             width: '100%', height: '100%', bgcolor: 'primary.main', color: 'primary.contrastText',
             p: 2, pb: tabValue === 1 ? 3.5 : 2,
@@ -35,29 +31,25 @@ const ServicesListCard = () => {
                 <CardHeader
                     sx={{ textAlign: 'right', color: 'primary.contrastText' }}
                     avatar={
-                        <Avatar aria-label='status-icon' sx={{ bgcolor: 'inherit' }}>
-                            <StatusIcon status={`${checkStatuses(services)}`} />
+                        <Avatar sx={{ bgcolor: 'inherit' }}>
+                            <StatusIcon status={`${fetchStatusByCount(services)}`} />
                         </Avatar>
                     }
-                    action={tabValue === 1 && (
-                        <IconButton aria-label='refresh' onClick={() => navigate(tabValue === 1 ? pathname : '*')} sx={{
-                            color: 'primary.contrastText'
-                        }}>
+                    action={
+                        <IconButton onClick={refetchServices} sx={{ color: 'primary.contrastText' }}>
                             <RefreshIcon fontSize='large' />
                         </IconButton>
-                    )}
+                    }
                     title='Rockstar Services'
                     subheader={`${new Date().toLocaleString()}`}
                 />
-                {tabValue === 1 && (
-                    <CardMedia
-                        sx={{ objectFit: 'contain'}}
-                        component='img'
-                        height='198px'
-                        image={fetchImage(0)}
-                        alt='logo'
-                    />
-                )}
+                <CardMedia
+                    sx={{ objectFit: 'contain' }}
+                    component='img'
+                    height='198px'
+                    image={fetchImage(0)}
+                    alt='logo'
+                />
                 <CardContent sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', pt: 4, px: 2, mt: 2 }}>
                     <Grid container spacing={2}>
                         {services.map((service, index) => (

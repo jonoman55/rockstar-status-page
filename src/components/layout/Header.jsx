@@ -5,6 +5,7 @@ import { useThemeContext } from '../../contexts/ThemeContext';
 import { useAppContext } from '../../contexts/AppContext';
 
 // TODO : Fix the logo position on mobile 
+// TODO : Style the Header better and add ToolTips
 const Header = () => {
     const { setTabValue } = useAppContext();
     const { theme, setTheme } = useThemeContext();

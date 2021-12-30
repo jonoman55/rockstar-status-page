@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom';
 import { Avatar, Box, Typography, Card, CardHeader, CardMedia, CardContent, CardActions, IconButton, Paper, Link, Stack, Divider } from '@mui/material';
 import { Refresh as RefreshIcon } from '@mui/icons-material';
 import { RockstarLoader } from '../other/RockstarLoader';
@@ -7,23 +6,19 @@ import { CardActionBox } from '../other/CardActionBox';
 import { Container, Title } from '../styles/ApiStatus.styled';
 import { styleStatus, fetchImage } from '../../helpers';
 import { useAppContext } from '../../contexts/AppContext';
-import { usePathname } from '../../hooks/usePathname';
 
 // TODO : Padd the Card Content
 const ApiStatusCard = () => {
-    const navigate = useNavigate();
-    const pathname = usePathname();
-
     const {
         tabValue,
         apiStatus,
         isLoading,
+        refetchApiStatus
     } = useAppContext();
 
     const color = styleStatus(apiStatus?.status?.toLowerCase());
 
-    if (isLoading) return <RockstarLoader />;
-    else return (
+    return isLoading ? <RockstarLoader /> : (
         <Container>
             <Card sx={{
                 alignContent: 'flex-start', justifyContent: 'center', alignItems: 'center',
@@ -38,28 +33,26 @@ const ApiStatusCard = () => {
                             <StatusIcon status={`${apiStatus?.status?.toLowerCase()}`} />
                         </Avatar>
                     }
-                    action={tabValue === 3 && (
-                        <IconButton aria-label='refresh' onClick={() => navigate(tabValue === 3 ? pathname : '*')} sx={{
+                    action={
+                        <IconButton aria-label='refresh' onClick={refetchApiStatus} sx={{
                             color: 'primary.contrastText'
                         }}>
                             <RefreshIcon fontSize='large' />
                         </IconButton>
-                    )}
+                    }
                     title='Rockstar Services Status API'
                     subheader={`${new Date().toLocaleString()}`}
                 />
-                {tabValue === 3 && (
-                    <CardMedia
-                        sx={{ objectFit: 'contain' }}
-                        component='img'
-                        height='198px'
-                        image={fetchImage(0)}
-                        alt='logo'
-                    />
-                )}
+                <CardMedia
+                    sx={{ objectFit: 'contain' }}
+                    component='img'
+                    height='198px'
+                    image={fetchImage(0)}
+                    alt='logo'
+                />
                 <CardContent sx={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap', pt: 4, px: 2, mt: 2 }}>
                     <Paper component={Link} href={`${process.env.REACT_APP_API_URL}`} target='_blank' sx={{
-                        color: 'primary.contrastText', bgcolor: 'primary.main', textDecoration: 'none', minHeight: '125px', 
+                        color: 'primary.contrastText', bgcolor: 'primary.main', textDecoration: 'none', minHeight: '125px',
                         '&:hover': { color: 'primary.contrastText', bgcolor: 'custom.disabled', opacity: 1 }, p: 1
                     }}>
                         <Title variant='h6'>{apiStatus?.message}</Title>

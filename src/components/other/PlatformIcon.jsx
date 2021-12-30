@@ -9,12 +9,12 @@ import {
 import {
     FaXbox as Xbox,
     FaDesktop as PC,
-    // FaPlaystation as Playstation
+    FaPlaystation as Playstation
 } from 'react-icons/fa';
 import {
     SiStadia as Stadia,
-    SiPlaystation4 as PS4,
-    SiPlaystation3 as PS3,
+    // SiPlaystation4 as PS4,
+    // SiPlaystation3 as PS3,
     SiXbox as Xbox360
 } from 'react-icons/si';
 import {
@@ -28,91 +28,91 @@ export const PlatformIcon = ({ platform }) => {
             return (
                 <Icon
                     component={PC}
-                    sx={{ color: 'primary.contrastText', width: 'auto' }}
+                    sx={{ color: 'custom.pc', width: 'auto' }}
                 />
             );
         case 'Xbox One':
             return (
                 <Icon
                     component={Xbox}
-                    sx={{ color: '#9bf00b', width: 'auto' }}
+                    sx={{ color: 'custom.xboxOne', width: 'auto' }}
                 />
             );
         case 'Xbox 360':
             return (
                 <Icon
                     component={Xbox360}
-                    sx={{ color: '#00af00', width: 'auto' }}
+                    sx={{ color: 'custom.xbox360', width: 'auto' }}
                 />
             );
         case 'Xbox Cloud Gaming':
             return (
                 <Icon
                     component={Xbox}
-                    sx={{ color: '#9e9e9e', width: 'auto' }}
+                    sx={{ color: 'custom.xboxCloud', width: 'auto' }}
                 />
             );
         case 'PS3':
             return (
                 <Icon
-                    component={PS3}
-                    sx={{ color: '#2196f3', width: 'auto' }}
+                    component={Playstation}
+                    sx={{ color: 'custom.playstation', width: 'auto' }}
                 />
             );
         case 'PS4':
             return (
                 <Icon
-                    component={PS4}
-                    sx={{ color: '#2196f3', width: 'auto' }}
+                    component={Playstation}
+                    sx={{ color: 'custom.playstation', width: 'auto' }}
                 />
             );
         case 'Stadia':
             return (
                 <Icon
                     component={Stadia}
-                    sx={{ color: '#f44336', width: 'auto' }}
+                    sx={{ color: 'custom.stadia', width: 'auto' }}
                 />
             );
         case 'Alert':
             return (
                 <Icon
                     component={Alert}
-                    sx={{ color: '#ffeb3b', width: 'auto' }}
+                    sx={{ color: 'custom.alert', width: 'auto' }}
                 />
             );
         case 'Authentication':
             return (
                 <Icon
                     component={Authentication}
-                    sx={{ color: 'primary.contrastText', width: 'auto' }}
+                    sx={{ color: 'custom.auth', width: 'auto' }}
                 />
             );
         case 'Store':
             return (
                 <Icon
                     component={Store}
-                    sx={{ color: 'primary.contrastText', width: 'auto' }}
+                    sx={{ color: 'custom.store', width: 'auto' }}
                 />
             );
         case 'Cloud Services':
             return (
                 <Icon
                     component={CloudServices}
-                    sx={{ color: 'primary.contrastText', width: 'auto' }}
+                    sx={{ color: 'custom.cloud', width: 'auto' }}
                 />
             );
         case 'Downloads':
             return (
                 <Icon
                     component={Downloads}
-                    sx={{ color: 'primary.contrastText', width: 'auto' }}
+                    sx={{ color: 'custom.downloads', width: 'auto' }}
                 />
             );
         case 'All Features':
             return (
                 <Icon
                     component={AllFeatures}
-                    sx={{ color: 'primary.contrastText', width: 'auto' }}
+                    sx={{ color: 'custom.all', width: 'auto' }}
                 />
             );
         default:

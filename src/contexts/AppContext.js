@@ -84,7 +84,7 @@ export const AppContextProvider = (props) => {
         }
     };
 
-    const getAllData = async () => {
+    const refetchAllData = async () => {
         setIsLoading(true);
         await getUpdated();
         await getApiStatus();
@@ -94,13 +94,38 @@ export const AppContextProvider = (props) => {
         setIsLoading(false);
     };
 
+    const refetchServices = async () => {
+        setIsLoading(true);
+        await getServices();
+        await simulateLoading(2000);
+        setIsLoading(false);
+    };
+
+    const refetchStatuses = async () => {
+        setIsLoading(true);
+        await getStatuses();
+        await simulateLoading(2000);
+        setIsLoading(false);
+    };
+
+    const refetchApiStatus = async () => {
+        setIsLoading(true);
+        await getApiStatus();
+        await simulateLoading(2000);
+        setIsLoading(false);
+    };
+
     useEffect(() => {
-        getAllData();
-        // eslint-disable-next-line
+        setIsLoading(true);
+        getUpdated();
+        getApiStatus();
+        getServices();
+        getStatuses();
+        simulateLoading(2000);
+        setIsLoading(false);
     }, []);
 
     const value = {
-        getAllData,
         apiStatus,
         setApiStatus,
         getApiStatus,
@@ -122,7 +147,12 @@ export const AppContextProvider = (props) => {
         setUpdated,
         getUpdated,
         timezone,
-        setTimezone
+        setTimezone,
+        refetchAllData,
+        refetchServices,
+        refetchStatuses,
+        refetchApiStatus,
+        simulateLoading
     };
 
     return (

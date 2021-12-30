@@ -3,8 +3,7 @@ import { Box, Typography, Divider, List, ListItem, ListItemIcon, ListItemText } 
 import { PlatformIcon } from '../other/PlatformIcon';
 import { styleStatus } from '../../helpers';
 
-// TODO : Make the PS4 icon larger
-export const PlatformsItem = ({ platforms }) => (
+const PlatformsListItem = ({ platforms }) => (
     <Box sx={{ py: 1 }}>
         <Divider sx={{ pt: 1 }} />
         <Typography sx={{ py: 2, fontSize: 18 }} variant='h6'>Platforms</Typography>
@@ -31,3 +30,5 @@ export const PlatformsItem = ({ platforms }) => (
         )}
     </Box>
 );
+
+export default PlatformsListItem;

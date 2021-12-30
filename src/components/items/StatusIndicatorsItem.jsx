@@ -3,11 +3,8 @@ import { IndicatorItem } from './IndicatorItem';
 import indicators from '../../constants/indicators';
 
 const RockstarStatusItem = () => (
-    <Paper sx={{
-        p: 2, mt: 2, mr: 0.5, color: 'primary.contrastText',
-        bgcolor: 'primary.main', minHeight: '125px', width: '100%'
-    }}>
-        <Typography variant='h6' sx={{ color: 'custom.main', py: 0.25 }}>Status Indicators</Typography>
+    <Paper sx={{ p: 2, mt: 2, mr: 0.5, color: 'primary.contrastText', bgcolor: 'primary.main', minHeight: '125px', width: '100%' }}>
+        <Typography variant='h6' sx={{ color: 'custom.main', py: 0.25, textAlign: 'center' }}>Status Indicators</Typography>
         <Divider sx={{ pb: 1 }} />
         <Grid container spacing={1} sx={{
             p: 2, pr: 1, width: '100%', display: 'flex', flexDirection: 'row', 

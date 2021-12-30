@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Box } from '@mui/material';
 import { RockstarLoader } from '../components/other/RockstarLoader';
 import NavBar from '../components/other/NavBar';
 import ServicePageCard from '../components/cards/ServicePageCard';
@@ -10,42 +9,39 @@ const ServicePage = () => {
     const { id } = useParams();
 
     const {
-        servicePageId,
         isLoading,
+        apiStatus,
         setIsLoading,
         serviceById,
         getServiceById,
         statusById,
         getStatusById,
+        simulateLoading
     } = useAppContext();
 
     const fetchData = async () => {
-        try {
-            setIsLoading(true);
-            await getServiceById(id);
-            await getStatusById(id);
-            setIsLoading(false);
-        } catch (error) {
-            console.log(error);
-        }
+        setIsLoading(true);
+        await getServiceById(id);
+        await getStatusById(id);
+        await simulateLoading(500);
+        setIsLoading(false);
     };
 
     useEffect(() => {
         fetchData();
         // eslint-disable-next-line
-    }, [servicePageId]);
+    }, [id]);
 
-    if (isLoading) return <RockstarLoader />;
-    else return (
+    return isLoading ? <RockstarLoader /> : (
         <>
             <NavBar />
-            <Box>
+            {apiStatus?.success && !isLoading && (
                 <ServicePageCard
                     service={serviceById}
                     status={statusById}
                     onRefresh={fetchData}
                 />
-            </Box>
+            )}
         </>
     );
 };

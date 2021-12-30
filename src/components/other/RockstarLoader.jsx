@@ -1,12 +1,24 @@
-import { Box } from '@mui/material';
-import loading from '../../images/loading.gif';
+import { styled, Box } from '@mui/material';
+import { Loading } from '../../images';
+
+const Container = styled(Box)(({ theme }) => ({
+    height: '85.65vh',
+    backgroundColor: theme.palette.custom.white,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: theme.spacing(0) 
+}));
+
+const LoadingImage = styled(Box)(({ theme }) => ({
+    border: 'solid',
+    borderWidth: '2px',
+    borderColor:  theme.palette.custom.disabled,
+    borderRadius: '1rem'
+}));
 
 export const RockstarLoader = () => (
-    <Box sx={{
-        height: '85.95vh', bgcolor: 'custom.gray', display: 'flex', alignItems: 'center', justifyContent: 'center', m: 0
-    }}>
-        <Box component='img' src={loading} alt='Loading...' sx={{
-            border: 'solid', borderWidth: '2px', borderColor: 'custom.disabled', borderRadius: '1rem'
-        }} />
-    </Box>
+    <Container>
+        <LoadingImage component='img' src={Loading} alt='Loading...' />
+    </Container>
 );

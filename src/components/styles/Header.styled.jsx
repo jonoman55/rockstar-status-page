@@ -5,9 +5,9 @@ export const HeaderTitle = styled(Box)(({ theme }) => ({
     textAlign: 'center',
     fontWeight: 'bold',
     textDecoration: 'none',
-    color: theme.palette.custom.dark,
+    color: theme.palette.custom.black,
     '&:hover': {
-        color: theme.palette.custom.light,
+        color: theme.palette.custom.white,
     },
     [theme.breakpoints.down('md')]: {
         fontSize: 18,
@@ -69,9 +69,9 @@ export const header = {
 };
 
 export const link = {
-    color: 'custom.dark',
+    color: 'custom.black',
     '&:hover': {
-        color: 'custom.light',
+        color: 'custom.white',
         cursor: 'pointer',
     },
 };
@@ -83,5 +83,10 @@ export const thumb = {
 };
 
 export const RockstarIcon = () => (
-    <Box component='img' src={logo} alt='logo' sx={{ height: 50, width: 50, pr: 1, ml: 1 }} />
+    <Box
+        component='img'
+        src={logo}
+        alt='logo'
+        sx={{ height: 50, width: 50, pr: 1, ml: 1 }}
+    />
 );

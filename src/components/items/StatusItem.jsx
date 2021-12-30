@@ -1,5 +1,5 @@
 import { Box, Divider, Paper, Stack, Typography } from '@mui/material';
-import { PlatformsItem } from './PlatformsItem';
+import PlatformsListItem from './PlatformsListItem';
 import { styleStatus } from '../../helpers';
 
 const StatusItem = ({ status }) => (
@@ -25,7 +25,7 @@ const StatusItem = ({ status }) => (
             <Typography>{new Date(status?.updated).toLocaleTimeString()}</Typography>
         </Box>
         {status?.services_platforms && (
-            <PlatformsItem platforms={status?.services_platforms} />
+            <PlatformsListItem platforms={status?.services_platforms} />
         )}
     </Paper>
 );
