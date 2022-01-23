@@ -1,20 +1,25 @@
-import Routes from './routes';
-import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
-import { light, dark } from './theme';
-import { useThemeContext } from './contexts/ThemeContext';
 
-// TODO : Add a OptionBar with Refresh button and add 5 min auto-refresh
-// TODO : Additionally add to the OptionBar a Dropdown Menu where you can select a different TimeZone ?tz=America/New_York
-// TODO : Add all the menu options for TimeZone to menuItems.js file in the constants folder
-// TODO : Fix the min vh property to avoid vertical scrollbar
-// TODO : Rename the All Tab to Home
+import { lazy, Suspense } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
+import { ErrorFallback } from './components/other/ErrorFallback';
+import { LoadingContainer } from './components/other/LoadingContainer';
+import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
+import { useThemeContext } from './contexts/ThemeContext';
+import { light, dark } from './theme';
+
+const Routes = lazy(() => import('./routes'));
+
 export default function App() {
     const { theme } = useThemeContext();
     const activeTheme = createTheme(theme ? dark : light);
     return (
         <ThemeProvider theme={activeTheme}>
             <CssBaseline />
-            <Routes />
+            <ErrorBoundary FallbackComponent={ErrorFallback} onReset={() => window.location.reload()}>
+                <Suspense fallback={<LoadingContainer />}>
+                    <Routes />
+                </Suspense>
+            </ErrorBoundary>
         </ThemeProvider>
     );
 };

@@ -1,24 +1,21 @@
 import { Avatar, Box, Typography, Card, CardHeader, CardMedia, CardContent, CardActions, IconButton, Paper, Link, Stack, Divider } from '@mui/material';
 import { Refresh as RefreshIcon } from '@mui/icons-material';
-import { RockstarLoader } from '../other/RockstarLoader';
 import { StatusIcon } from '../other/StatusIcon';
 import { CardActionBox } from '../other/CardActionBox';
 import { Container, Title } from '../styles/ApiStatus.styled';
 import { styleStatus, fetchImage } from '../../helpers';
 import { useAppContext } from '../../contexts/AppContext';
 
-// TODO : Padd the Card Content
 const ApiStatusCard = () => {
     const {
         tabValue,
         apiStatus,
-        isLoading,
         refetchApiStatus
     } = useAppContext();
 
     const color = styleStatus(apiStatus?.status?.toLowerCase());
 
-    return isLoading ? <RockstarLoader /> : (
+    return (
         <Container>
             <Card sx={{
                 alignContent: 'flex-start', justifyContent: 'center', alignItems: 'center',
@@ -52,24 +49,24 @@ const ApiStatusCard = () => {
                 />
                 <CardContent sx={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap', pt: 4, px: 2, mt: 2 }}>
                     <Paper component={Link} href={`${process.env.REACT_APP_API_URL}`} target='_blank' sx={{
-                        color: 'primary.contrastText', bgcolor: 'primary.main', textDecoration: 'none', minHeight: '125px',
-                        '&:hover': { color: 'primary.contrastText', bgcolor: 'custom.disabled', opacity: 1 }, p: 1
+                        p: 2, color: 'primary.contrastText', bgcolor: 'primary.main', textDecoration: 'none', minHeight: '125px',
+                        '&:hover': { color: 'primary.contrastText', bgcolor: 'custom.disabled', opacity: 1 }
                     }}>
                         <Title variant='h6'>{apiStatus?.message}</Title>
                         <Divider sx={{ pb: 1 }} />
-                        <Stack direction='row' sx={{ pt: 1 }}>
+                        <Stack direction='row' sx={{ pt: 2 }}>
                             <Typography sx={{ pr: 1 }}>Status:</Typography>
                             <Typography variant='body1' sx={{ color: color, fontWeight: 'bold' }}>
                                 {apiStatus?.status}
                             </Typography>
                         </Stack>
-                        <Divider sx={{ pt: 1 }} />
-                        <Box component='span' sx={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', py: 1 }}>
+                        <Divider sx={{ pt: 2 }} />
+                        <Box component='span' sx={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', py: 2 }}>
                             {`Updated: ${apiStatus?.updated}`}
                         </Box>
                     </Paper>
                 </CardContent>
-                <CardActions sx={{ display: 'flex' }}>
+                <CardActions sx={{ p: 0, display: 'flex' }}>
                     <CardActionBox />
                 </CardActions>
             </Card>

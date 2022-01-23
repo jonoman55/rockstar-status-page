@@ -1,5 +1,5 @@
+import * as api from '../api';
 import { createContext, useContext, useState, useEffect } from 'react';
-import { fetchAll, fetchApiStatus, fetchServices, fetchServiceById, fetchStatuses, fetchStatusById, sleep } from '../services';
 
 const AppState = createContext({});
 
@@ -15,73 +15,38 @@ export const AppContextProvider = (props) => {
     const [servicePageId, setServicePageId] = useState(0);
     const [timezone, setTimezone] = useState('America/New_York');
 
-    // TODO : Update API calls to accept timezone param
     const getUpdated = async () => {
-        try {
-            const data = await fetchAll('America/New_York');
-            console.log(data?.updated);
-            setUpdated(data?.updated);
-        } catch (error) {
-            console.log(error);
-        }
+        const data = await api.fetchAll('America/New_York');
+        setUpdated(data?.updated);
     };
 
     const getStatuses = async () => {
-        try {
-            const data = await fetchStatuses();
-            console.log(data);
-            setStatuses(data);
-        } catch (error) {
-            console.log(error);
-        }
+        const data = await api.fetchStatuses();
+        setStatuses(data);
     };
 
     const getStatusById = async (id) => {
-        try {
-            const data = await fetchStatusById(id);
-            console.log(data);
-            setStatusById(data.shift());
-        } catch (error) {
-            console.log(error);
-        }
+        const data = await api.fetchStatusById(id);
+        setStatusById(data.shift());
     };
 
     const getServices = async () => {
-        try {
-            const data = await fetchServices();
-            console.log(data);
-            setServices(data);
-        } catch (error) {
-            console.log(error);
-        }
+        const data = await api.fetchServices();
+        setServices(data);
     };
 
     const getServiceById = async (id) => {
-        try {
-            const data = await fetchServiceById(id);
-            console.log(data);
-            setServiceById(data.shift());
-        } catch (error) {
-            console.log(error);
-        }
+        const data = await api.fetchServiceById(id);
+        setServiceById(data.shift());
     };
 
     const getApiStatus = async () => {
-        try {
-            const data = await fetchApiStatus();
-            console.log(data);
-            setApiStatus(data);
-        } catch (error) {
-            console.log(error);
-        }
+        const data = await api.fetchApiStatus();
+        setApiStatus(data);
     };
 
     const simulateLoading = async (milliseconds) => {
-        try {
-            await sleep(milliseconds);
-        } catch (error) {
-            console.log(error);
-        }
+        await api.sleep(milliseconds);
     };
 
     const refetchAllData = async () => {
@@ -90,14 +55,14 @@ export const AppContextProvider = (props) => {
         await getApiStatus();
         await getServices();
         await getStatuses();
-        await simulateLoading(2000);
+        await simulateLoading(1000);
         setIsLoading(false);
     };
 
     const refetchServices = async () => {
         setIsLoading(true);
         await getServices();
-        await simulateLoading(2000);
+        await simulateLoading(1000);
         setIsLoading(false);
     };
 
@@ -111,7 +76,7 @@ export const AppContextProvider = (props) => {
     const refetchApiStatus = async () => {
         setIsLoading(true);
         await getApiStatus();
-        await simulateLoading(2000);
+        await simulateLoading(1000);
         setIsLoading(false);
     };
 
@@ -121,7 +86,7 @@ export const AppContextProvider = (props) => {
         getApiStatus();
         getServices();
         getStatuses();
-        simulateLoading(2000);
+        simulateLoading(1000);
         setIsLoading(false);
     }, []);
 

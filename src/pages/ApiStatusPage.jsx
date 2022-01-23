@@ -12,11 +12,11 @@ const ApiStatusPage = () => {
 
     return isLoading ? <RockstarLoader /> : (
         <PageItem>
-            {apiStatus?.success && !isLoading && tabValue === 3 && (
+            {apiStatus?.success && tabValue === 3 && (
                 <ApiStatusCard />
             )}
         </PageItem>
     );
-}
+};
 
 export default ApiStatusPage

@@ -1,23 +1,20 @@
 import { NavLink } from 'react-router-dom';
 import { Avatar, Card, CardHeader, CardMedia, CardContent, CardActions, IconButton, Paper, Grid } from '@mui/material';
 import { Refresh as RefreshIcon } from '@mui/icons-material';
-import { RockstarLoader } from '../other/RockstarLoader';
 import { StatusIcon } from '../other/StatusIcon';
 import { CardActionBox } from '../other/CardActionBox';
 import StatusItem from '../items/StatusItem';
 import { fetchImage, fetchStatusByCount } from '../../helpers';
 import { useAppContext } from '../../contexts/AppContext';
 
-// TODO : Padd the Card Content
 const StatusesListCard = () => {
     const {
         statuses,
-        isLoading,
         tabValue,
         refetchStatuses,
     } = useAppContext();
 
-    return isLoading ? <RockstarLoader /> : (
+    return (
         <Paper sx={{ p: 2, pb: 3.5, width: '100%', height: '100%', bgcolor: 'primary.main', color: 'primary.contrastText' }}>
             <Card sx={{
                 alignContent: 'flex-start', justifyContent: 'center', alignItems: 'center',
@@ -50,7 +47,7 @@ const StatusesListCard = () => {
                 <CardContent sx={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap', pt: 4, px: 2, mt: 2 }}>
                     <Grid container spacing={2}>
                         {statuses?.map((status, index) => (
-                            <Grid component={NavLink} to={`/service/${status?.id}`} item key={index} xs={12} sm={12} md={12} lg={12} sx={{
+                            <Grid item key={index} component={NavLink} to={`/service/${status?.id}`} xs={12} sm={12} md={12} lg={12} sx={{
                                 color: 'custom.main', textDecoration: 'none', p: 1
                             }}>
                                 <StatusItem status={status} />
@@ -58,7 +55,7 @@ const StatusesListCard = () => {
                         ))}
                     </Grid>
                 </CardContent>
-                <CardActions sx={{ display: 'flex' }}>
+                <CardActions sx={{ p: 0, display: 'flex' }}>
                     <CardActionBox />
                 </CardActions>
             </Card>

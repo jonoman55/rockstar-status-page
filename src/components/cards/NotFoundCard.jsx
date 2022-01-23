@@ -16,7 +16,7 @@ const NotFoundCard = ({ onClick }) => (
                 />
             </Box>
             <CardActions sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <Button variant='contained' onClick={onClick} sx={{ color: 'primary.contrastText' }}>
+                <Button variant='contained' onClick={onClick} sx={{ mb: 2, color: 'custom.white', bgcolor: 'custom.black', '&:hover': { bgcolor: 'custom.main' } }}>
                     Go Home
                 </Button>
             </CardActions>

@@ -10,8 +10,7 @@ import StatusIndicatorsItem from '../items/StatusIndicatorsItem';
 import { fetchImage, checkStatusesCount } from '../../helpers';
 import { useAppContext } from '../../contexts/AppContext';
 
-// TODO : Remove this Card component -> AllCard replaces it
-// TODO : Pad the Card Content
+// TODO : Remove this Card component -> replaced by AllCard 
 const OverallStatusCard = () => {
     const {
         isLoading,

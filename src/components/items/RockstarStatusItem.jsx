@@ -24,9 +24,7 @@ const RockstarStatusItem = ({ services, statuses, updated }) => (
             </Typography>
         </Stack>
         <Divider sx={{ pt: 1 }} />
-        <Box component='span' sx={{
-            display: 'flex', flexDirection: 'row', alignItems: 'flex-start', py: 1
-        }}>
+        <Box  sx={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', py: 1 }}>
             {`Updated: ${updated}`}
         </Box>
     </Paper>

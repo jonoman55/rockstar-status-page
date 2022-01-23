@@ -1,23 +1,20 @@
 import { NavLink } from 'react-router-dom';
 import { Avatar, Card, CardHeader, CardMedia, CardContent, CardActions, IconButton, Paper, Grid } from '@mui/material';
 import { Refresh as RefreshIcon } from '@mui/icons-material';
-import { RockstarLoader } from '../other/RockstarLoader';
 import { StatusIcon } from '../other/StatusIcon';
 import { CardActionBox } from '../other/CardActionBox';
 import ServiceItem from '../items/ServiceItem';
 import { fetchStatusByCount, fetchImage } from '../../helpers';
 import { useAppContext } from '../../contexts/AppContext';
 
-// TODO : Pad the Card Content
 const ServicesListCard = () => {
     const {
         services,
-        isLoading,
         tabValue,
         refetchServices
     } = useAppContext();
 
-    return isLoading ? <RockstarLoader /> : (
+    return (
         <Paper sx={{
             width: '100%', height: '100%', bgcolor: 'primary.main', color: 'primary.contrastText',
             p: 2, pb: tabValue === 1 ? 3.5 : 2,
@@ -61,7 +58,7 @@ const ServicesListCard = () => {
                         ))}
                     </Grid>
                 </CardContent>
-                <CardActions sx={{ display: 'flex' }}>
+                <CardActions sx={{ p: 0, display: 'flex' }}>
                     <CardActionBox />
                 </CardActions>
             </Card>

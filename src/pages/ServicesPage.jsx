@@ -12,7 +12,7 @@ const ServicesPage = () => {
 
     return isLoading ? <RockstarLoader /> : (
         <PageItem>
-            {apiStatus?.success && !isLoading && tabValue === 1 && (
+            {apiStatus?.success && tabValue === 1 && (
                 <ServicesListCard />
             )}
         </PageItem>

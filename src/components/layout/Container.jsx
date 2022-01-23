@@ -1,8 +1,8 @@
-import { styled, Box } from '@mui/material';
+import { styled, useMediaQuery, Box } from '@mui/material';
 
 export const Container = styled(Box)(({ theme }) => ({
     width: '100%',
     height: '100%',
-    minHeight: '85.6vh',
+    minHeight: useMediaQuery(theme.breakpoints.up('sm')) ? '83.75vh' : '100%',//85.6vh'
     backgroundColor: theme.palette.primary.main,
 }));

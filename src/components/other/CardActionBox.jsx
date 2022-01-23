@@ -13,8 +13,8 @@ const Container = styled(Box)(({ theme }) => ({
 }));
 
 const Content = styled(Box)`
-    height: 24;
-    width: 24;
+    height: 16px;
+    width: 16px;
 `;
 
 export const CardActionBox = () => (

@@ -4,30 +4,20 @@ import { Wifi as WifiIcon } from '@mui/icons-material';
 import { Paper, Card, CardHeader, CardMedia, CardContent, CardActions, IndicatorsContainer } from '../styles/PaperCard.styled';
 import { FlexText } from '../styles/FlexControls';
 import { PlatformIcon } from '../other/PlatformIcon';
-import { RockstarLoader } from '../other/RockstarLoader';
 import { CardActionBox } from '../other/CardActionBox';
 import StatusIndicatorsItem from '../items/StatusIndicatorsItem';
 import { fetchStatusByCount, styleStatus } from '../../helpers';
 import { useAppContext } from '../../contexts/AppContext';
 
-// TODO : Convert components to styled components
-// TODO : Refactor the code and clean it up
-// TODO : Make individual components for all items
-// TODO : Make the Card maxHeight mobile friendly
-// TODO : Move IndicatorsContainer into StatusIndicatorsItem
-// TODO : Make the updated date mobile more mobile friendly
 const AllCard = () => {
     const {
-        isLoading,
         services,
         statuses,
         updated,
         refetchAllData
     } = useAppContext();
 
-    console.log(statuses);
-
-    return isLoading ? <RockstarLoader /> : (
+    return (
         <Paper>
             <Card>
                 <CardHeader
@@ -86,7 +76,7 @@ const AllCard = () => {
                         <StatusIndicatorsItem />
                     </IndicatorsContainer>
                 </CardContent>
-                <CardActions>
+                <CardActions sx={{ p: 0, display:'flex' }}>
                     <CardActionBox />
                 </CardActions>
             </Card>

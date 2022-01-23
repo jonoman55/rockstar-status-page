@@ -27,7 +27,7 @@ const TabGroup = () => {
 
     return (
         <AppBar component='div' position='relative' elevation={1} sx={{ width: '100%' }}>
-            <Paper sx={{ color: 'primary.contrastText', bgcolor: 'primary.dark', borderRadius: .25 }}>
+            <Paper sx={{ color: 'primary.contrastText', bgcolor: 'primary.dark', borderRadius: 0.25 }}>
                 <Tabs value={tabValue} onChange={handleChange} centered variant='fullWidth'>
                     <Tab label='All' {...a11yProps(0)} />
                     <Tab label='Services' {...a11yProps(1)} />

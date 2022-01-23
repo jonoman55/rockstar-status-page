@@ -10,7 +10,6 @@ const ServicePage = () => {
 
     const {
         isLoading,
-        apiStatus,
         setIsLoading,
         serviceById,
         getServiceById,
@@ -35,13 +34,11 @@ const ServicePage = () => {
     return isLoading ? <RockstarLoader /> : (
         <>
             <NavBar />
-            {apiStatus?.success && !isLoading && (
-                <ServicePageCard
-                    service={serviceById}
-                    status={statusById}
-                    onRefresh={fetchData}
-                />
-            )}
+            <ServicePageCard
+                service={serviceById}
+                status={statusById}
+                onRefresh={fetchData}
+            />
         </>
     );
 };
