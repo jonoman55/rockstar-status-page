@@ -18,7 +18,7 @@ const Footer = () => (
                         John Chiappetta {new Date().getFullYear()}
                     </FlexButton>
                 </Tooltip>
-                <Divider orientation='vertical' flexItem sx={{ py: 1 }} />
+                <Divider orientation='vertical' flexItem sx={{ py: 1, pl: 1 }} />
                 <Tooltip title='Rockstar Games' placement='top'>
                     <FlexButton component={Link} href='https://www.rockstargames.com/' target='_blank'
                         startIcon={<Copyright sx={{ ml: 1, mb: 0.5 }} />}
