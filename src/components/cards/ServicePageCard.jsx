@@ -6,7 +6,7 @@ import PlatformsListItem from '../items/PlatformsListItem';
 import { styleStatus, fetchImage } from '../../helpers';
 
 const ServicePageCard = ({ service, status, onRefresh }) => (
-    <Paper sx={{
+    <Paper elevation={0} sx={{
         width: '100%', height: '100%', bgcolor: 'primary.main', color: 'primary.contrastText',
         p: 2, pb: 2, borderRadius: 0, boxShadow: 'none'
     }}>

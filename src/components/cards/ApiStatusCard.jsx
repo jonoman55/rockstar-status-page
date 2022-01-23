@@ -17,7 +17,7 @@ const ApiStatusCard = () => {
 
     return (
         <Container>
-            <Card sx={{
+            <Card elevation={0} sx={{
                 alignContent: 'flex-start', justifyContent: 'center', alignItems: 'center',
                 bgcolor: 'primary.light', color: 'primary.contrastText',
                 '& .MuiCardHeader-title': { color: 'primary.contrastText', pr: tabValue === 3 && 1 },

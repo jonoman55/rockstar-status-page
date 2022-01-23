@@ -1,7 +1,7 @@
 import { styled, Box, CircularProgress } from '@mui/material';
 
 const SpinnerBox = styled(Box)(({ theme }) => ({
-    height: '85.65vh',
+    height: '83.9vh',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',

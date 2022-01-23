@@ -15,7 +15,7 @@ const StatusesListCard = () => {
     } = useAppContext();
 
     return (
-        <Paper sx={{ p: 2, pb: 3.5, width: '100%', height: '100%', bgcolor: 'primary.main', color: 'primary.contrastText' }}>
+        <Paper elevation={0} sx={{ p: 2, pb: 3.5, width: '100%', height: '100%', bgcolor: 'primary.main', color: 'primary.contrastText' }}>
             <Card sx={{
                 alignContent: 'flex-start', justifyContent: 'center', alignItems: 'center',
                 bgcolor: 'primary.light', color: 'primary.contrastText',

@@ -1,7 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { Avatar, Box, Card, CardHeader, CardMedia, CardContent, CardActions, IconButton, Paper, Grid } from '@mui/material';
 import { Refresh as RefreshIcon } from '@mui/icons-material';
-import { RockstarLoader } from '../other/RockstarLoader';
 import { StatusIcon } from '../other/StatusIcon';
 import { CardActionBox } from '../other/CardActionBox';
 import RockstarStatusItem from '../items/RockstarStatusItem';
@@ -13,15 +12,14 @@ import { useAppContext } from '../../contexts/AppContext';
 // TODO : Remove this Card component -> replaced by AllCard 
 const OverallStatusCard = () => {
     const {
-        isLoading,
         services,
         statuses,
         updated,
         refetchAllData
     } = useAppContext();
 
-    return isLoading ? <RockstarLoader /> : (
-        <Paper sx={{ p: 2, bgcolor: 'primary.main', color: 'primary.contrastText' }}>
+    return (
+        <Paper elevation={0} sx={{ p: 2, bgcolor: 'primary.main', color: 'primary.contrastText' }}>
             <Card sx={{
                 alignContent: 'flex-start', justifyContent: 'center', alignItems: 'center',
                 bgcolor: 'primary.light', color: 'primary.contrastText',

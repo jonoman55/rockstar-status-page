@@ -15,9 +15,8 @@ const ServicesListCard = () => {
     } = useAppContext();
 
     return (
-        <Paper sx={{
-            width: '100%', height: '100%', bgcolor: 'primary.main', color: 'primary.contrastText',
-            p: 2, pb: tabValue === 1 ? 3.5 : 2,
+        <Paper elevation={0} sx={{
+            width: '100%', height: '100%', bgcolor: 'primary.main', color: 'primary.contrastText', p: 2, pb: tabValue === 1 ? 3.5 : 2,
         }}>
             <Card sx={{
                 alignContent: 'flex-start', justifyContent: 'center', alignItems: 'center',

@@ -2,7 +2,7 @@ import { styled, useMediaQuery, Box } from '@mui/material';
 import { Loading } from '../../images';
 
 const Container = styled(Box)(({ theme }) => ({
-    height: useMediaQuery(theme.breakpoints.down('xs')) ? '100%' :'83.75vh',//'85.65vh',
+    height: useMediaQuery(theme.breakpoints.down('xs')) ? '100%' :'83.9vh',//'85.65vh',
     backgroundColor: theme.palette.custom.white,
     display: 'flex',
     alignItems: 'center',

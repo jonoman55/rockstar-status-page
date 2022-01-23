@@ -18,7 +18,7 @@ const AllCard = () => {
     } = useAppContext();
 
     return (
-        <Paper>
+        <Paper elevation={0}>
             <Card>
                 <CardHeader
                     title='Service Status'

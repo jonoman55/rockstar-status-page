@@ -2,17 +2,20 @@ import { Box, Button, Typography, Paper, Card, CardContent, CardActions, CardMed
 import { SentimentDissatisfied } from '@mui/icons-material';
 
 const NotFoundCard = ({ onClick }) => (
-    <Paper sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', bgcolor: 'primary.main', minHeight: '85.5vh' }}>
-        <Card sx={{ display: 'flex', height: '100%', flexDirection: 'column', bgcolor: 'primary.light' }}>
-            <CardContent>
-                <Typography variant='h6' gutterBottom paragraph sx={{ p: 1, textAlign: 'center', color: 'primary.contrastText', fontWeight: 'bold' }}>
-                    404 - Page Not Found
+    <Paper elevation={0} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', bgcolor: 'primary.main', minHeight: '79.7vh' }}>
+        <Card sx={{ display: 'flex', height: '100%', flexDirection: 'column', bgcolor: 'primary.dark', minWidth: '250px' }}>
+            <CardContent sx={{ display: 'flex', flexDirection: 'column', flexWrap: 'nowrap' }}>
+                <Typography variant='h6' sx={{ textAlign: 'center', color: 'primary.contrastText', fontWeight: 'bold' }}>
+                    404
+                </Typography>
+                <Typography variant='h6' gutterBottom paragraph sx={{ textAlign: 'center', color: 'custom.contrastText', fontWeight: 'bold' }}>
+                    Page Not Found
                 </Typography>
             </CardContent>
             <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', pb: 4 }}>
                 <CardMedia
                     component={SentimentDissatisfied}
-                    sx={{ color: 'custom.main', height: 64, width: 64 }}
+                    sx={{ color: 'custom.main', bgcolor: 'custom.white', height: 64, width: 64, borderRadius: '3rem' }}
                 />
             </Box>
             <CardActions sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
