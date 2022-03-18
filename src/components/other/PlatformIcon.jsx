@@ -15,7 +15,7 @@ import {
     SiStadia as Stadia,
     // SiPlaystation4 as PS4,
     // SiPlaystation3 as PS3,
-    SiPlaystation5 as PS5,
+    // SiPlaystation5 as PS5,
     SiXbox as Xbox360
 } from 'react-icons/si';
 import {
@@ -77,7 +77,7 @@ export const PlatformIcon = ({ platform }) => {
         case 'PS5':
             return (
                 <Icon
-                    component={PS5}
+                    component={Playstation}
                     sx={{ color: 'custom.playstation', width: 'auto' }}
                 />
             )
