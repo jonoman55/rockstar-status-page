@@ -1,4 +1,4 @@
-import { RockstarLoader } from '../components/other/RockstarLoader';
+import { Spinner } from '../components/other/Spinner';
 import PageItem from '../components/items/PageItem';
 import AllCard from '../components/cards/AllCard';
 import { useAppContext } from '../contexts/AppContext';
@@ -10,7 +10,7 @@ const AllStatusesPage = () => {
         tabValue
     } = useAppContext();
 
-    return isLoading ? <RockstarLoader /> : (
+    return isLoading ? <Spinner /> : (
         <PageItem>
             {apiStatus?.success && tabValue === 0 && (
                 <AllCard />

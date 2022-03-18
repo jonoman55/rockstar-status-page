@@ -13,7 +13,6 @@ const SpinnerProgress = styled(CircularProgress)(({ theme }) => ({
     color: theme.palette.custom.main,
 }));
 
-// TODO : Remove from project
 export const Spinner = () => (
     <SpinnerBox>
         <SpinnerProgress />

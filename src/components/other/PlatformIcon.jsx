@@ -15,6 +15,7 @@ import {
     SiStadia as Stadia,
     // SiPlaystation4 as PS4,
     // SiPlaystation3 as PS3,
+    SiPlaystation5 as PS5,
     SiXbox as Xbox360
 } from 'react-icons/si';
 import {
@@ -52,6 +53,13 @@ export const PlatformIcon = ({ platform }) => {
                     sx={{ color: 'custom.xboxCloud', width: 'auto' }}
                 />
             );
+        case 'Xbox Series X/S': 
+            return (
+                <Icon
+                    component={Xbox}
+                    sx={{ color: 'custom.green', width: 'auto' }}
+            />
+            )
         case 'PS3':
             return (
                 <Icon
@@ -66,6 +74,13 @@ export const PlatformIcon = ({ platform }) => {
                     sx={{ color: 'custom.playstation', width: 'auto' }}
                 />
             );
+        case 'PS5':
+            return (
+                <Icon
+                    component={PS5}
+                    sx={{ color: 'custom.playstation', width: 'auto' }}
+                />
+            )
         case 'Stadia':
             return (
                 <Icon

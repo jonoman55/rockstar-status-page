@@ -8,6 +8,7 @@ import { CardActionBox } from '../other/CardActionBox';
 import StatusIndicatorsItem from '../items/StatusIndicatorsItem';
 import { fetchStatusByCount, styleStatus } from '../../helpers';
 import { useAppContext } from '../../contexts/AppContext';
+import { sortBy } from 'lodash';
 
 const AllCard = () => {
     const {
@@ -16,6 +17,24 @@ const AllCard = () => {
         updated,
         refetchAllData
     } = useAppContext();
+
+    const platforms = (status) => sortBy(status?.services_platforms, ['name'])?.map((platform, idx) => {
+        return (
+            <Box key={idx} sx={{
+                p: 1, display: 'flex', flexWrap: 'nowrap', flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-start'
+            }}>
+                <Box sx={{ display: 'flex', flexWrap: 'nowrap', flexDirection: 'row', width: '100%', justifyContent: 'space-between' }}>
+                    <Box sx={{ display: 'flex', flexWrap: 'nowrap', flexDirection: 'row' }}>
+                        <PlatformIcon platform={platform?.name} />
+                        <Typography sx={{ pl: 2 }}>{platform?.name}</Typography>
+                    </Box>
+                    <Typography sx={{ color: `${styleStatus(platform?.status?.toLowerCase())}`, fontWeight: 'bold' }}>
+                        {platform?.status}
+                    </Typography>
+                </Box>
+            </Box>
+        );
+    });
 
     return (
         <Paper elevation={0}>
@@ -40,10 +59,10 @@ const AllCard = () => {
                         Updated{' '}{`${updated}`}
                     </FlexText>
                     <Divider variant='middle' sx={{ pt: 1 }} />
-                    <Grid container spacing={2} sx={{ p: 2 }}>
+                    <Grid container spacing={{ xs: 2, md: 3 }} sx={{ p: 2 }}>
                         {statuses.filter(status => status?.name !== 'General' && status?.name !== 'Support').map((status, index) => (
-                            <Grid item key={index} component={NavLink} to={`/service/${status?.id}`} xs={12} sm={6} md={6} lg={3} xl={3} sx={{ textDecoration: 'none' }}>
-                                <Card elevation={1} sx={{ p: 2, minHeight: '575px', bgcolor: 'primary.main', '&:hover': { bgcolor: 'custom.disabled' } }}>
+                            <Grid item key={index} component={NavLink} to={`/service/${status?.id}`} xs={12} sm={12} md={6} lg={4} xl={3} sx={{ textDecoration: 'none' }}>
+                                <Card elevation={1} sx={{ p: 2, minHeight: '625px', bgcolor: 'primary.main', '&:hover': { bgcolor: 'custom.disabled' } }}>
                                     <Box sx={{ p: 1, border: 'solid 1px black', borderRadius: '0.5rem', bgcolor: 'custom.white' }}>
                                         <CardMedia id={status?.id} />
                                     </Box>
@@ -52,21 +71,7 @@ const AllCard = () => {
                                     </Typography>
                                     <Divider variant='middle' />
                                     <Stack direction='column' spacing={1} sx={{ pt: 2 }}>
-                                        {status?.services_platforms?.map((platform, idx) => (
-                                            <Box key={idx} sx={{
-                                                p: 1, display: 'flex', flexWrap: 'nowrap', flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-start'
-                                            }}>
-                                                <Box sx={{ display: 'flex', flexWrap: 'nowrap', flexDirection: 'row', width: '100%', justifyContent: 'space-between' }}>
-                                                    <Box sx={{ display: 'flex', flexWrap: 'nowrap', flexDirection: 'row' }}>
-                                                        <PlatformIcon platform={platform?.name} />
-                                                        <Typography sx={{ pl: 2 }}>{platform?.name}</Typography>
-                                                    </Box>
-                                                    <Typography sx={{ color: `${styleStatus(platform?.status?.toLowerCase())}`, fontWeight: 'bold' }}>
-                                                        {platform?.status}
-                                                    </Typography>
-                                                </Box>
-                                            </Box>
-                                        ))}
+                                        {status?.services_platforms && platforms(status)}
                                     </Stack>
                                 </Card>
                             </Grid>
