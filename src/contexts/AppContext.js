@@ -27,7 +27,7 @@ export const AppContextProvider = (props) => {
 
     const getStatusById = async (id) => {
         const data = await api.fetchStatusById(id);
-        setStatusById(data.shift());
+        setStatusById(data);
     };
 
     const getServices = async () => {
@@ -37,7 +37,7 @@ export const AppContextProvider = (props) => {
 
     const getServiceById = async (id) => {
         const data = await api.fetchServiceById(id);
-        setServiceById(data.shift());
+        setServiceById(data);
     };
 
     const getApiStatus = async () => {
