@@ -13,10 +13,9 @@ export const AppContextProvider = (props) => {
     const [statusById, setStatusById] = useState([]);
     const [tabValue, setTabValue] = useState(0);
     const [servicePageId, setServicePageId] = useState(0);
-    const [timezone, setTimezone] = useState('America/New_York');
 
     const getUpdated = async () => {
-        const data = await api.fetchAll('America/New_York');
+        const data = await api.fetchUpdated();
         setUpdated(data?.updated);
     };
 
@@ -111,8 +110,6 @@ export const AppContextProvider = (props) => {
         updated,
         setUpdated,
         getUpdated,
-        timezone,
-        setTimezone,
         refetchAllData,
         refetchServices,
         refetchStatuses,

@@ -14,6 +14,16 @@ export const fetchApiStatus = async () => {
     }
 };
 
+export const fetchUpdated = async () => {
+    try {
+        console.log('/updated called...');
+        const { data } = await axiosInstance.get('/updated');
+        return data;
+    } catch (error) {
+        console.log(error);
+    }
+};
+
 export const fetchAll = async (tz) => {
     try {
         console.log('/all called...');
