@@ -1,9 +1,10 @@
 
 import { lazy, Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
+import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
+
 import { ErrorFallback } from './components/other/ErrorFallback';
 import { LoadingContainer } from './components/other/LoadingContainer';
-import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
 import { useThemeContext } from './contexts/ThemeContext';
 import { light, dark } from './theme';
 
